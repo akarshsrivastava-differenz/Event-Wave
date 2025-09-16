@@ -1,0 +1,142 @@
+{
+  "users": [
+    {
+      "id": "user-1",
+      "username": "Alice",
+      "phone": "123-456-7890",
+      "email": "alice@example.com"
+    },
+    {
+      "id": "user-2",
+      "username": "Bob",
+      "phone": "987-654-3210",
+      "email": "bob@example.com"
+    },
+    {
+      "id": "user-3",
+      "username": "Charlie",
+      "phone": "555-123-4567",
+      "email": "charlie@example.com"
+    },
+    {
+      "id": "user-4",
+      "username": "Diana",
+      "phone": "444-333-2222",
+      "email": "diana@example.com"
+    },
+    {
+      "id": "user-5",
+      "username": "Eve",
+      "phone": "111-222-3333",
+      "email": "eve@example.com"
+    },
+    {
+      "id": "user-6",
+      "username": "Frank",
+      "phone": "999-888-7777",
+      "email": "frank@example.com"
+    },
+    {
+      "id": "user-7",
+      "username": "Grace",
+      "phone": "777-666-5555",
+      "email": "grace@example.com"
+    },
+    {
+      "id": "user-8",
+      "username": "Heidi",
+      "phone": "333-444-5555",
+      "email": "heidi@example.com"
+    }
+  ],
+  "events": [
+    {
+      "event_id": "event-1",
+      "event_name": "Team Meeting",
+      "event_date": "2025-09-20",
+      "creator_user_id": "user-1",
+      "creator_username": "Alice",
+      "description": "A mandatory meeting to discuss the Q3 project roadmap and assign new tasks to the team members."
+    },
+    {
+      "event_id": "event-2",
+      "event_name": "Project Deadline",
+      "event_date": "2025-10-01",
+      "creator_user_id": "user-2",
+      "creator_username": "Bob",
+      "description": "Final project submission for the new marketing campaign. All deliverables must be uploaded by the end of the day."
+    },
+    {
+      "event_id": "event-3",
+      "event_name": "Holiday Party",
+      "event_date": "2025-12-25",
+      "creator_user_id": "user-1",
+      "creator_username": "Alice",
+      "description": "An annual event to celebrate the holiday season. The event will include food, music, and a gift exchange."
+    },
+    {
+      "event_id": "event-4",
+      "event_name": "Product Launch",
+      "event_date": "2025-11-15",
+      "creator_user_id": "user-4",
+      "creator_username": "Diana",
+      "description": "The official launch of our new product line, 'Nebula'. This event is for partners and press."
+    },
+    {
+      "event_id": "event-5",
+      "event_name": "Quarterly Review",
+      "event_date": "2025-10-25",
+      "creator_user_id": "user-5",
+      "creator_username": "Eve",
+      "description": "A review of Q3 performance and a planning session for Q4."
+    },
+    {
+      "event_id": "event-6",
+      "event_name": "Company Town Hall",
+      "event_date": "2025-11-05",
+      "creator_user_id": "user-6",
+      "creator_username": "Frank",
+      "description": "An open forum for employees to ask questions and receive company-wide updates."
+    },
+    {
+      "event_id": "event-7",
+      "event_name": "Client Onboarding",
+      "event_date": "2025-10-10",
+      "creator_user_id": "user-7",
+      "creator_username": "Grace",
+      "description": "A welcome session for our new client, Tech Innovations Inc. Introduction to our team and services."
+    },
+    {
+      "event_id": "event-8",
+      "event_name": "Dev Workshop",
+      "event_date": "2025-11-20",
+      "creator_user_id": "user-8",
+      "creator_username": "Heidi",
+      "description": "A hands-on workshop to learn about the latest trends in software development."
+    },
+    {
+      "event_id": "event-9",
+      "event_name": "Marketing Strategy Session",
+      "event_date": "2025-12-01",
+      "creator_user_id": "user-5",
+      "creator_username": "Eve",
+      "description": "Brainstorming and finalizing the marketing strategy for the new product launch."
+    },
+    {
+      "event_id": "event-10",
+      "event_name": "Office Lunch",
+      "event_date": "2025-10-18",
+      "creator_user_id": "user-6",
+      "creator_username": "Frank",
+      "description": "A casual team lunch to celebrate the completion of the latest sprint."
+    },
+    {
+      "event_id": "event-11",
+      "event_name": "Annual General Meeting",
+      "event_date": "2025-12-10",
+      "creator_user_id": "user-1",
+      "creator_username": "Alice",
+      "description": "Meeting for all shareholders to review the company's financial performance and future plans."
+    }
+  ]
+}

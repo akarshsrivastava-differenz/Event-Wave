@@ -1,0 +1,21 @@
+.card-grid{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin:1rem;
+}
+
+.event-description{
+    border:black 1px solid;
+    min-height:7rem;
+    max-width:20rem;
+    margin-top:1rem;
+    padding:0.5rem;
+}
+.Event-Card{
+    margin:2rem 0;
+}

@@ -1,0 +1,5 @@
+.content-container {
+    min-height: 100vh;
+    margin:calc(var(--navbar-height) + 1rem) 0 0 0;
+    padding:2rem;
+}
