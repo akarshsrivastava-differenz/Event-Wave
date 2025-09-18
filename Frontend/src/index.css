@@ -4,6 +4,7 @@
   font-weight: 400;
   margin:0;
   padding:0;
+  width:100%;
 
   color-scheme: light;
 
@@ -12,7 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --navbar-height:4rem;
+  --navbar-height:3.5rem;
 }
 
 a {

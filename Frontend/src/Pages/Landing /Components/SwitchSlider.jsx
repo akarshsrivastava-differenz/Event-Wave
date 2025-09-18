@@ -1,12 +1,15 @@
-import * as React from 'react';
-import Switch from '@mui/material/Switch';
+import Form from 'react-bootstrap/Form';
 
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
-
-const SwitchSlider = ({isChecked , handleChange}) => {
+const SwitchSlider = ({ isChecked, handleChange }) => {
     return (
         <div>
-            <Switch {...label} value={isChecked} onChange={handleChange}/>
+            {/* <Switch {...label} value={isChecked} onChange={handleChange}/> */}
+            <Form.Check
+                value={isChecked}
+                onChange={handleChange}
+                type="switch"
+                id="custom-switch"
+            />
         </div>
     );
 }

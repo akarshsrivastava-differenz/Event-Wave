@@ -1,7 +1,7 @@
 #search-bar{
-    width:30rem;
+    width:10rem;
     border:none;
-    border-radius:2rem;
+    border-radius:0.5rem;
     text-align:center;
-    height:1.5rem;
+    height:1.8rem;
 }

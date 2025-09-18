@@ -1,5 +1,9 @@
 .content-container {
     min-height: 100vh;
-    margin:calc(var(--navbar-height) + 1rem) 0 0 0;
-    padding:2rem;
+    margin:calc(var(--navbar-height) + 0.5rem) 0;
+    padding:1rem 2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
