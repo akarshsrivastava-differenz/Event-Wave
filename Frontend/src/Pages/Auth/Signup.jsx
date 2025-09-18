@@ -7,6 +7,7 @@ const Signup = () => {
     return (
         <div id="signup-page">
             <Form id="signup-box">
+                <h1 style={{textAlign:"center",color:"#916BBF"}}>Sign up</h1> <br />
                 <Form.Group className="mb-3" controlId="signup-email">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" />
@@ -25,8 +26,8 @@ const Signup = () => {
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
 
-                <Button style={{float:"right"}} variant="primary" type="submit">
-                    Submit
+                <Button style={{float:"right" , border : "none",backgroundColor:"#916BBF"}} variant="primary" type="submit">
+                    Sign in
                 </Button>
             </Form>
         </div>

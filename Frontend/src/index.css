@@ -13,7 +13,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --navbar-height:3.5rem;
+  --navbar-height : 3.5rem;
+  --color-shade-1 : #1C0C5B;
+  --color-shade-2 : #3D2C8D;
+  --color-shade-3 : #916BBF;
+  --color-shade-4 : #C996CC;
+  --logo-shade-1 : #D5ED9F;
+  --logo-shade-2 : #FFFBE6;
 }
 
 a {
