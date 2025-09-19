@@ -185,27 +185,6 @@
       "creator_user_id": "user-9",
       "creator_username": "Ivan",
       "description": "A friendly coding competition to test skills and win prizes."
-    },
-    {
-      "event_id": "event-13",
-      "event_date": "2025-10-28",
-      "creator_user_id": "user-2",
-      "creator_username": "Bob",
-      "description": "An off-site retreat for team bonding and collaboration activities."
-    },
-    {
-      "event_id": "event-14",
-      "event_date": "2025-11-25",
-      "creator_user_id": "user-10",
-      "creator_username": "Judy",
-      "description": "A professional webinar discussing new trends and applications in artificial intelligence."
-    },
-    {
-      "event_id": "event-15",
-      "event_date": "2025-10-05",
-      "creator_user_id": "user-4",
-      "creator_username": "Diana",
-      "description": "Review of the new website design mockups with the core design team."
     }
   ]
 }

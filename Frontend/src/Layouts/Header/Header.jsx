@@ -1,12 +1,15 @@
 import './Header.css';
-import SearchBar from '../Search Bar/SearchBar';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons"
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useUser } from '../../contexts/UserContext';
 
 const Header = () => {
+
+    const {isAuthenticated , logout} = useUser();
+
     return (
         <header>
 
@@ -22,10 +25,15 @@ const Header = () => {
 
                 <div className='user-dropdown'>
                     <FontAwesomeIcon icon={faUser} id="user-icon" />
-                    <div class="user-dropdown-content">
+                    {isAuthenticated? 
+                    <div className="user-dropdown-content">
+                        <Link className="nav-links" onClick={logout} to="/login">Log out</Link> <br />
+                    </div>:
+                    <div className="user-dropdown-content">
                         <Link className="nav-links" to="/login">Log in</Link> <br />
                         <Link className="nav-links" to="/signup">Sign up</Link>
-                    </div>
+                    </div> 
+                    }
                 </div>
 
                 <div className="responsive-nav-link-slider">
