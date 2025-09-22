@@ -1,0 +1,129 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+/*main*/
+#main-landing{
+    width:100%;
+    height:100%;
+}
+
+/*first div (Intro div) */
+ #landing-intro-container{
+    width:100%;
+    height:fit-content;
+    background-image: linear-gradient(to bottom right, var(--color-shade-3) , var(--logo-shade-2));
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:13rem;
+    border-radius:1rem;
+ }
+ #intro-container-text{
+    color:var(--color-shade-1);
+    height:fit-content;    
+    width:fit-content;
+    margin-bottom:2rem;
+ }
+ #intro-container-text h1{
+    font-size:4rem;
+ }
+.intro-btns{
+    background-image: linear-gradient(to left,var(--color-shade-1),var(--color-shade-2));
+    color:white;
+    margin-left:1rem;
+    width:20rem;
+    height:fit-content;
+    padding:1.2rem;
+    border-radius: 1rem;
+ }
+  #intro-container-btns .intro-btns:hover{
+    border:none;
+ }
+
+ /*second div (recent events)*/
+#landing-recent-events-container{
+    height:fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:3.5rem 0;
+}
+#landing-recent-events-static{
+    text-align: center;
+}
+#landing-recent-events-cards{
+    width:100%;
+    display:flex;
+    height:18rem;
+    justify-content: space-between;
+    margin:1rem 1.5rem;
+}
+#landing-recent-events-cards .recent-events-card{
+    width: 30%;
+    height:100%;
+}
+
+/*third dic (How it works)*/
+.landing-working{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:2rem 0;
+}
+.landing-working-static-text{
+    margin-bottom:1rem;
+}
+.landing-working-cards-container{
+    display:flex;
+    justify-content: space-between;
+}
+.landing-working-cards{
+    padding:2rem;
+    border:1px solid var(--color-shade-1);
+    border-radius:10px;
+    width:30%;
+}
+.landing-working-cards .landing-working-card-icon{
+    font-size: 3.5rem;
+    margin:1.5rem;
+}
+.landing-working-cards h6{
+    color:gray;
+}
+.landing-working-cards:hover h6{
+    color:black;
+}
+.landing-working-cards:hover .landing-working-card-icon{
+    color:var(--color-shade-2);
+}
+.landing-working-cards:hover{
+   box-shadow: 1px 1px 10px 1px var(--color-shade-3);
+}
+
+
+/*join now div*/
+.landing-join-now{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:5rem 0 ;
+    height:25rem;
+    background-image: linear-gradient(to bottom right, var(--color-shade-3) , var(--logo-shade-2));
+    border-radius: 1rem;
+}
+.landing-join-now h1{
+    margin-bottom:2rem;
+    color:var(--color-shade-1);
+}
+.landing-join-now h6{
+    margin-bottom:3rem;
+    color:var(--color-shade-1);
+}
