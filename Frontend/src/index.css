@@ -18,11 +18,22 @@
   --color-shade-2 : #3D2C8D;
   --color-shade-3 : #916BBF;
   --color-shade-4 : #C996CC;
+  --color-shade-5 : #DBE4C9;
+  --color-shade-6 : #4682A9;
+
+  --color-off-shade-1 : #F5841A;
+  --color-off-shade-2 : #FF007B;
+  --color-off-shade-3 :#612C83;
+  --color-off-shade-4 :#302387;
+
   --logo-shade-1 : #D5ED9F;
   --logo-shade-2 : #FFFBE6;
   --logo-shade-3 : #00712D;
-}
+  --logo-shade-4 : #166534;
 
+  --event-confirm : lightgreen;
+  --event-pending : #854d0e;
+}
 a {
   font-weight: 500;
   color: #646cff;

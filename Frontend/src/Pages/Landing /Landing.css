@@ -121,7 +121,9 @@
 }
 .landing-join-now h1{
     margin-bottom:2rem;
+    color:var(--color-shade-1);
 }
 .landing-join-now h6{
     margin-bottom:3rem;
+    color:var(--color-shade-1);
 }

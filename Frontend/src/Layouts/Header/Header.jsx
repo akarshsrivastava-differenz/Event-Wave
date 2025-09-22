@@ -27,7 +27,8 @@ const Header = () => {
                     <FontAwesomeIcon icon={faUser} id="user-icon" />
                     {isAuthenticated? 
                     <div className="user-dropdown-content">
-                        <Link className="nav-links" onClick={logout} to="/login">Log out</Link> <br />
+                        <Link className="nav-links" to="/dashboard">dashboard</Link> <br />
+                        <Link className="nav-links" onClick={logout} to="/login">log out</Link>
                     </div>:
                     <div className="user-dropdown-content">
                         <Link className="nav-links" to="/login">Log in</Link> <br />
@@ -39,7 +40,6 @@ const Header = () => {
                 <div className="responsive-nav-link-slider">
                     <FontAwesomeIcon icon={faBars} />
                     <div className="responsive-nav-link-panel">
-                        <button id="responsive-panel-close">Close</button>
                         <Link className="nav-links" to="/events">Events</Link> 
                         <Link className="nav-links" to="/">How it works</Link> 
                         <Link className="nav-links" to="/">Reviews</Link>

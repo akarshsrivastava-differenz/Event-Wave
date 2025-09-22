@@ -6,7 +6,7 @@
 header{
     height:var(--navbar-height);
     width:100vw;
-    background-color:var(--color-shade-2);
+    background-image:linear-gradient(to right,var(--color-shade-2) , var(--color-shade-3));
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -81,8 +81,9 @@ header{
 /* User dropdown */
 
 .user-dropdown-content{
-    background-color: black;
+    background-image: linear-gradient(to top left,var(--color-shade-2),var(--color-shade-3));
     padding:1rem;
+    border:0.5px solid var(--color-shade-2);
     width:fit-content;
     position:absolute;
     right:0;
@@ -98,6 +99,7 @@ header{
 }
 .user-dropdown:hover .user-dropdown-content{
     display:block;
+    right:2rem;
 }
 
 /* Nav-link-slider */
@@ -147,8 +149,9 @@ header{
         background-color:black;
         color:white;
         position:absolute;
-        right:0;
-        top:0;
+        right:1rem;
+        top:1rem;
+        left:100;
         z-index:3 ;
     }
     .responsive-nav-link-panel .nav-links{
@@ -162,11 +165,6 @@ header{
         text-align: center;
         text-decoration: none;
         color:var(--logo-shade-1);
-    }
-    #responsive-panel-close{
-        background-color:black;
-        color:white;
-        width:100%;   
     }
 }
 

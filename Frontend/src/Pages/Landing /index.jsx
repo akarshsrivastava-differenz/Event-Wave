@@ -47,7 +47,7 @@ const Landing = () => {
                 <div id="landing-recent-events-container">
                     <div id="landing-recent-events-static">
                         <h1>Featured Events</h1>
-                        <h5> Handpicked events you won't want to miss</h5>
+                        <h5 style={{color:"grey"}}> Handpicked events you won't want to miss</h5>
                     </div>
                     <div id="landing-recent-events-cards">
                         {isLoading && <h1>Loading...</h1>}
@@ -62,7 +62,7 @@ const Landing = () => {
                 <div className="landing-working">
                     <div className="landing-working-static-text">
                         <h2>How It Works</h2>
-                        <h6>Simple steps to your next amazing experience</h6>
+                        <h6 style={{color:"grey"}}>Simple steps to your next amazing experience</h6>
                     </div>
                     <div className="landing-working-cards-container">
                         <div className="landing-working-cards">
@@ -88,7 +88,7 @@ const Landing = () => {
                                 <FontAwesomeIcon icon={faClipboardUser} />
                             </div>
                             <div className="landing-working-card-text">
-                                <h3>Browse</h3>
+                                <h3>Attend</h3>
                                 <h6>Show up and enjoy unforgettable experiences and connections</h6>
                             </div>
                         </div>

@@ -1,0 +1,57 @@
+/*Main*/
+.dashboard-event-card{
+    background-color: var(--color-shade-5);
+    padding:1rem;
+    border-radius: 1rem;
+    border:1px var(--logo-shade-3) solid;
+    margin-top:2rem;
+}
+
+/*event card info*/
+.dashboard-event-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:0.5rem;
+}
+.dashboard-event-info .dashboard-event-subInfo{
+    height:fit-content;
+    color:var(--color-shade-1);
+    padding:0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    flex-wrap: wrap;
+}
+.dashboard-event-info .dashboard-event-subInfo p {
+    margin:0;
+}
+.status-btn-container{
+    background-color: var(--color-shade-1);
+    padding:0.4rem;
+    color:white;
+    font-weight: 500;
+    border-radius: 0.45rem;
+}
+.status-btn{
+    text-decoration: none;
+    color:white;
+}
+.status-btn-container:hover .status-btn{
+    text-decoration: none;
+    color:var(--logo-shade-1);
+}
+
+.event-status-confirmed{
+    background-color: var(--event-confirm) !important;
+    color:var(--color-off-shade-4);
+    font-weight:550;
+    height:fit-content;
+    border-radius: 2.2rem;
+    padding:0.5rem 0.9rem;
+}
+p{
+    margin:0;
+}
+

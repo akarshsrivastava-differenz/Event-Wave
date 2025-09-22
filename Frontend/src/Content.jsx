@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 const Content = ({ children }) => {
 
     const location = useLocation();
-    const shouldRemovePadding = location.pathname === "/login" || location.pathname === "/signup";
+    const shouldRemovePadding = location.pathname === "/login" || location.pathname === "/signup" || location.pathname === "/dashboard";
     const padding = shouldRemovePadding? "0" : "2rem";
     let height=null;
     if(shouldRemovePadding){

@@ -5,9 +5,13 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated , setIsAuthenticated]=useState(false);
+    const [userType , setUserType] = useState(false);
 
     const login = (userData) => {
         setUser(userData);
+        if(userData.role === "organizer"){
+            setUserType(true);
+        }
         setIsAuthenticated(true);
     }
     const logout = () => {
@@ -19,7 +23,8 @@ export const UserProvider = ({ children }) => {
         user,
         login,
         logout,
-        isAuthenticated
+        isAuthenticated,
+        userType
     };
 
     return (
