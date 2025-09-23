@@ -41,7 +41,7 @@ const OrganizerDashboard = () => {
                 <div className="organizer-header-2-table-conatainer">
                     <Table responsive className="table border-spacing">
                         <thead>
-                            <tr class="organizer-table-row">
+                            <tr className="organizer-table-row">
                                 <th>Events</th>
                                 <th>Date</th>
                                 <th>Tickets sold</th>

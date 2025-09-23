@@ -1,8 +1,7 @@
 import DashboardMenu from "./Components/DashboardMenu";
 import "./Dashboard.css";
 import { useUser } from "../../contexts/UserContext";
-import AttendeeDashboard from "./Attendee/AttendeeDashboard";
-import OrganizerDashboard from "./Organizer/OrganizerDashboard";
+import { Outlet } from "react-router";
 
 const Dashboard = ()=>{
     
@@ -11,7 +10,7 @@ const Dashboard = ()=>{
     return (
         <div className="dashboard-main">
             <DashboardMenu userType={userType}/>
-            {userType?<OrganizerDashboard/> : <AttendeeDashboard/>}
+            <Outlet/>
         </div>
     );
 } 
