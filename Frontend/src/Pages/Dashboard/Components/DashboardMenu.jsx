@@ -11,17 +11,18 @@ const DashboardMenu = ({userType}) => {
 
             {userType ?
                 <div className="dashboard-menu-options">
-                    <div className="dashboard-menu-btns"><Link to="/dashboard" className="dashboad-menu-links">Home</Link></div>
-                    <div className="dashboard-menu-btns"><Link className="dashboad-menu-links">My Events</Link></div>
-                    <div className="dashboard-menu-btns"><Link to="/dashboard/create-event" className="dashboad-menu-links">Create Events</Link></div>
-                    <div className="dashboard-menu-btns"><Link className="dashboad-menu-links">Chat</Link></div>
-                    <div className="dashboard-menu-btns"><Link className="dashboad-menu-links">Settings</Link></div>
+                    <Link to="/dashboard" className="dashboad-menu-links"><div className="dashboard-menu-btns">Home</div></Link>
+                    <Link className="dashboad-menu-links"><div className="dashboard-menu-btns">My Events</div></Link>
+                    <Link to="/dashboard/create-event" className="dashboad-menu-links"><div className="dashboard-menu-btns">Create Events</div></Link>
+                    <Link className="dashboad-menu-links"><div className="dashboard-menu-btns">Chat</div></Link>
+                    <Link className="dashboad-menu-links"><div className="dashboard-menu-btns">Settings</div></Link>
                 </div> :
                 <div className="dashboard-menu-options">
-                    <div className="dashboard-menu-btns"><Link to="/dashboard" className="dashboad-menu-links">Home</Link></div>
-                    <div className="dashboard-menu-btns"><Link className="dashboad-menu-links">My Ticket</Link></div>
-                    <div className="dashboard-menu-btns"><Link className="dashboad-menu-links">Chat</Link></div>
-                    <div className="dashboard-menu-btns"><Link className="dashboad-menu-links">Settings</Link></div>
+                    <Link to="/dashboard" className="dashboad-menu-links"><div className="dashboard-menu-btns">Home</div></Link>
+                    <Link to="/dashboard/create-event" className="dashboad-menu-links"><div className="dashboard-menu-btns">Create Events</div></Link>
+                    <Link className="dashboad-menu-links"><div className="dashboard-menu-btns">My Ticket </div> </Link>
+                    <Link className="dashboad-menu-links"><div className="dashboard-menu-btns">Chat</div></Link>
+                    <Link className="dashboad-menu-links"><div className="dashboard-menu-btns">Settings</div></Link>
                 </div>
             }
 
