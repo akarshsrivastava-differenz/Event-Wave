@@ -7,7 +7,7 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const DashboardEventCard = () => {
     return (
-        <div class="dashboard-event-card">
+        <div className="dashboard-event-card">
             <h4>Event name</h4>
             <div className="dashboard-event-info">
                 <div className="dashboard-event-subInfo">

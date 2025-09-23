@@ -17,6 +17,7 @@ export const UserProvider = ({ children }) => {
     const logout = () => {
         setUser(null);
         setIsAuthenticated(false);
+        setUserType(false);
     }
 
     const contextValue = {

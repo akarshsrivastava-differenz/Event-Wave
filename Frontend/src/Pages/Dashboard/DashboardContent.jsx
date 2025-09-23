@@ -1,0 +1,15 @@
+import AttendeeDashboard from "./Attendee/AttendeeDashboard";
+import OrganizerDashboard from "./Organizer/OrganizerDashboard";
+import { useUser } from "../../contexts/UserContext";
+
+const DashboardContent = () => {
+    const { userType } = useUser();
+
+    return (
+        <>
+            {userType ? <OrganizerDashboard /> : <AttendeeDashboard />}
+        </>
+    );
+}
+
+export default DashboardContent;
