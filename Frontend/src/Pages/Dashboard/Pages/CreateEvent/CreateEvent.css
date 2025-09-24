@@ -25,46 +25,31 @@ h4,p{
     color:gray;
 }
 
-/*form main container*/
+/*Form container*/
 .create-event-form-container{
     padding:1rem;
     background-color: var(--color-shade-5);
-    margin:1rem 0 0 0;
+    margin-top:1rem;
     border-radius:1rem;
 }
-/*Event Information*/
-.form-information-section-main{
-    padding:2rem 1rem;
+.form-section-main{
+    padding:1rem;
     margin:1rem 0;
-    background-color: var(--logo-shade-2);
     border-radius: 1rem;
-}
-
-/*Event schedule and location*/
-.form-schedule-location{
-    margin-top: 2rem;
-}
-.form-schedule-location-main{
-    padding:2rem 1rem;
-    margin:1rem 0;
     background-color: var(--logo-shade-2);
-    border-radius: 1rem;
 }
-
-/*create btn*/
 .create-btn{
-    background-image:linear-gradient(to bottom right,var(--color-shade-2),var(--color-shade-3));
-    border-radius: 0.7rem;
+    background-image: linear-gradient(to right bottom,var(--color-shade-2),var(--color-shade-3));
     color:white;
-    border:none;   
+    border:none;
+    border-radius: 0.7rem;
 }
 .create-btn:hover{
     color:var(--logo-shade-1);
     box-shadow: 1px 1px 5px 1px black;
 }
 .create-btn-container{
-    padding:1rem;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    padding:0.5rem;
+    justify-content: end;
 }

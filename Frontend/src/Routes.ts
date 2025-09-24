@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 Component: ProtectedRoutes,
                 children: [
                     { path: "events", Component: Events },
-                    {
+                    { 
                         path : "dashboard", 
                         Component : Dashboard,
                         children:[
