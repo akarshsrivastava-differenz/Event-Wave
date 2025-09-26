@@ -1,5 +1,4 @@
 import userData from "../models/user";
-import { IUser } from "../models/user";
 export class UserServices{
     static getAllUsers = () : IUser[]=>{
         return userData; 

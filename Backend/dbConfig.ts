@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize";
-import { dbConfig } from "../config/dbConfig";
+
 
 const sequelize = new Sequelize(
-    dbConfig.DB,
-    dbConfig.USER,
-    dbConfig.PASSWORD,
+    process.env.DB_NAME || "event-wave",
+    process.env.DB_USER || "root",
+    process.env.DB_PASSWORD || "",
     {
-        host:dbConfig.HOST,
+        host:process.env.DB_HOST || "localhost",
         dialect:"mysql"
     }
 )
