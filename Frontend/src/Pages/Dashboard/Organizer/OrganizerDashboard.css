@@ -34,11 +34,15 @@
 h4{
     margin:0;
 }
-.organizer-header-main-container .organizer-header-2-btn{
+.organizer-header-2-btn{
     background-image:linear-gradient(to bottom right,var(--color-shade-2),var(--color-shade-3)) ;
     border-radius: 0.7rem;
     margin:0 1rem;
     border:none;
+    color:white
+}
+.organizer-header-2-btn:hover{
+    color:var(--logo-shade-1);
 }
 .organizer-header-2-options{
     margin-bottom:2rem;

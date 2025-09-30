@@ -35,7 +35,7 @@ const OrganizerDashboard = () => {
                         <option value="completed">Completed</option>
                         <option value="Draft">Draft</option>
                     </select>
-                    <button className="organizer-header-2-btn"><Link className="link">Create Event</Link></button>
+                    <Link to="/dashboard/create-event" className="link"><button className="organizer-header-2-btn">Create Event</button></Link>
                 </div>
 
                 <div className="organizer-header-2-table-conatainer">

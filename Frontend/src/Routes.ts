@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router";
-import Landing from "./Pages/Landing ";
+import Landing from "./Pages/Landing";
 import Events from "./Pages/Events/index";
 import Signup from "./Pages/Auth/Signup/Signup";
 import Login from "./Pages/Auth/Login/Login";
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
                 Component: ProtectedRoutes,
                 children: [
                     { path: "events", Component: Events },
-                    {
+                    { 
                         path : "dashboard", 
                         Component : Dashboard,
                         children:[
