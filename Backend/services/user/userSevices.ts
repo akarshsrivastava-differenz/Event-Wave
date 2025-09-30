@@ -1,5 +1,5 @@
 import { threadId } from "worker_threads";
-import User from "../../models/user";
+import User from "../../models/user/user";
 import { Op } from "sequelize";
 
 export class UserServices {

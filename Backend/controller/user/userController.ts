@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction} from "express";
 import { UserServices } from "../../services/user/userSevices";
-import User from "../../models/user";
+import User from "../../models/user/user";
 
 export class UserController {
     static async getAllUsers(req: Request, res: Response, next: NextFunction) {

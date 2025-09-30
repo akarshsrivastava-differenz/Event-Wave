@@ -6,8 +6,8 @@ import express, { Express, Request, Response } from "express";
 import userRoutes from "./routes/user/userRoutes";
 import { LoggerMiddleware } from "./middleware/logger";
 import sequelize from "./config/dbConfig";
-import  "./models/user";
-import "./models/event";
+import  "./models/user/user";
+import "./models/event/event";
 import "./config/association";
 
 const app: Express = express();

@@ -1,5 +1,5 @@
 import { Sequelize, Model, DataTypes, UUIDV4 } from "sequelize";
-import sequelize from "../config/dbConfig";
+import sequelize from "../../config/dbConfig";
 
 interface EventAttributes{
     event_id: string,
