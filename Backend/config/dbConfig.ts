@@ -11,6 +11,7 @@ const sequelize = new Sequelize(
     }
 )
 
+
 sequelize.authenticate()
 .then(()=>{
     console.log("Database communication has been established successfully");
@@ -19,9 +20,5 @@ sequelize.authenticate()
     console.error("Unable to connect to database! : ",err);
 });
 
-const db = {
-    sequelize,
-    Sequelize
-}
 
-export default db;
+export default sequelize;
