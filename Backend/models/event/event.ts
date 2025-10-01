@@ -6,10 +6,8 @@ interface EventAttributes{
     event_title: string,
     event_description: string,
     event_category: string,
-    event_start_date: string,
-    event_end_date: string,
-    event_start_time: string,
-    event_end_time: string,
+    event_start: Date,
+    event_end: Date,
     event_venue_address: string,
     event_price: number,
     event_quantity: number,
@@ -20,10 +18,8 @@ class Event extends Model<EventAttributes> implements EventAttributes {
     public event_title!: string;
     public event_description!: string;
     public event_category!: string;
-    public event_start_date!: string;
-    public event_end_date!: string;
-    public event_start_time!: string;
-    public event_end_time!: string;
+    public event_start!: Date;
+    public event_end!: Date;
     public event_venue_address!: string;
     public event_price!: number;
     public event_quantity!: number;
@@ -51,20 +47,12 @@ Event.init(
         event_category: {
             type: DataTypes.STRING(20)
         },
-        event_start_date: {
-            type: DataTypes.DATEONLY,
+        event_start: {
+            type: DataTypes.DATE,
             allowNull: false
         },
-        event_end_date: {
-            type: DataTypes.DATEONLY,
-            allowNull: false
-        },
-        event_start_time: {
-            type: DataTypes.TIME,
-            allowNull: false
-        },
-        event_end_time: {
-            type: DataTypes.TIME,
+        event_end: {
+            type: DataTypes.DATE,
             allowNull: false
         },
         event_venue_address: {

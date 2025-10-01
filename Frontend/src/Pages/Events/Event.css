@@ -1,0 +1,35 @@
+*{
+    padding:0;
+    margin:0;
+}
+/*main*/
+event-main{
+    padding:0rem;
+}
+.event-static-container{
+    background-image: linear-gradient(to right bottom , var(--color-shade-3) , var(--logo-shade-2));
+    padding:7rem;
+    color:var(--color-shade-1);
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.event-static-text{
+    margin-bottom:2rem;
+}
+.event-static-text h1{
+    font-size: 4rem;
+}
+.event-static-dropdowns{
+    display: flex;
+    justify-content: space-evenly;
+    width:100%;
+    margin-top: 5rem;
+}
+.dropdowns{
+    padding:0.5rem 2rem;
+    height:100%;
+    width:100%;
+    margin:0 1rem;
+    border-radius:0.5rem; 
+}

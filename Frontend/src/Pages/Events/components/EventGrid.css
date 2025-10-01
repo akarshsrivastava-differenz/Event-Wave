@@ -1,0 +1,12 @@
+.events-card-container{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin:1.5rem 0;
+}
+.events-card{
+    width:30%;
+    margin:1rem 0;
+    height:20rem;
+}
