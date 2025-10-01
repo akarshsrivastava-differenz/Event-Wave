@@ -84,7 +84,9 @@ Event.init(
         sequelize: sequelize,
         tableName:"events",
         modelName:"Event",
-        timestamps:true
+        timestamps:true,
+        paranoid:true,
+        deletedAt:"deleted_at"
     }
 );
 

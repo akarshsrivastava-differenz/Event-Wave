@@ -1,15 +1,18 @@
 import { DataTypes, Model , UUIDV4 } from "sequelize";
 import sequelize from "../../config/dbConfig";
 
+export type UserRole = 'organiser' | 'attendee'; 
+
 interface UserAttributes {
     user_id: string,
     first_name: string,
     last_name: string,
     email: string,
     hashed_password: string,
-    role: string,
+    role: UserRole,
     phone_number: string
 }
+
 
 class User extends Model<UserAttributes> implements UserAttributes {
     public user_id!: string;
@@ -17,7 +20,7 @@ class User extends Model<UserAttributes> implements UserAttributes {
     public last_name!:string;
     public email!: string;
     public hashed_password!: string;
-    public role!: string;
+    public role!: UserRole;
     public phone_number!: string;
 
     public readonly createdAt!: Date;
@@ -53,8 +56,9 @@ User.init(
             allowNull: false
         },
         role: {
-            type: DataTypes.STRING(9),
-            allowNull: false
+            type: DataTypes.ENUM("attendee" , "organiser"),
+            allowNull: false,
+            defaultValue:"attendee"
         },
         phone_number: {
             type: DataTypes.STRING(10),
@@ -66,7 +70,9 @@ User.init(
         sequelize:sequelize,
         tableName:"users",
         modelName:"User",
-        timestamps:true
+        timestamps:true,
+        paranoid:true,
+        deletedAt:"deleted_at"
     }
 );
 

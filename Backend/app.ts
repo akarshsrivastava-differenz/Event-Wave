@@ -14,7 +14,7 @@ const app: Express = express();
 const PORT: number = 8000;
 
 
-sequelize.sync({ force:false })
+sequelize.sync({ force:false ,})
     .then(() => {
         console.log("Database and models synchronized successfully!");
     })
