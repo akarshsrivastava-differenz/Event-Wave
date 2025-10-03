@@ -10,22 +10,19 @@ interface EventAttributes{
     event_end: Date,
     event_venue_address: string,
     event_price: number,
-    event_quantity: number,
+    event_size: number,
 }
 
 class Event extends Model<EventAttributes> implements EventAttributes {
-    public event_id!: string;
-    public event_title!: string;
-    public event_description!: string;
-    public event_category!: string;
-    public event_start!: Date;
-    public event_end!: Date;
-    public event_venue_address!: string;
-    public event_price!: number;
-    public event_quantity!: number;
-
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    declare event_id: string;
+    declare event_title: string;
+    declare event_description: string;
+    declare event_category: string;
+    declare event_start: Date;
+    declare event_end: Date;
+    declare event_venue_address: string;
+    declare event_price: number;
+    declare event_size: number;
 }
 
 Event.init(
@@ -34,7 +31,7 @@ Event.init(
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: UUIDV4,
-            allowNull: false
+            allowNull: false,
         },
         event_title: {
             type: DataTypes.STRING(50),
@@ -45,9 +42,10 @@ Event.init(
             allowNull: false
         },
         event_category: {
-            type: DataTypes.STRING(20)
+            type: DataTypes.ENUM("conference" , "workshop" , "concert" , "festival" , "networking"),
+            allowNull:false,
         },
-        event_start: {
+        event_start: {    
             type: DataTypes.DATE,
             allowNull: false
         },
@@ -63,7 +61,7 @@ Event.init(
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        event_quantity: {
+        event_size: {
             type: DataTypes.INTEGER,
             allowNull: false
         }

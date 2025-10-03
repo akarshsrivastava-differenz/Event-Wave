@@ -15,16 +15,13 @@ interface UserAttributes {
 
 
 class User extends Model<UserAttributes> implements UserAttributes {
-    public user_id!: string;
-    public first_name!: string;
-    public last_name!:string;
-    public email!: string;
-    public password!: string;
-    public role!: UserRole;
-    public phone_number!: string;
-
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    declare user_id: string;
+    declare first_name: string;
+    declare last_name:string;
+    declare email: string;
+    declare password: string;
+    declare role: UserRole;
+    declare phone_number: string;
 }
 
 User.init(

@@ -27,11 +27,11 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const result = await axios.get("http://localhost:3000/users");
+            const result = await axios.post("http://localhost:8000/users/login" , {email , password} , {withCredentials:true});
             const userData = result.data;
-            const user = userData.find((user) => user.email === email && user.password === password);
-            if (user) {
-                login(user);
+
+            if (userData.user_id) {
+                login(userData);
                 navigate("/");
             }
             else {
@@ -39,7 +39,7 @@ const Login = () => {
             }
         }
         catch (err) {
-            console.log(err);
+            console.log("Error while connecting to server : " , err);
         }
     }
 
