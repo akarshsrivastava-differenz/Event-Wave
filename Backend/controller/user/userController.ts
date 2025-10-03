@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction} from "express";
 import { UserServices } from "../../services/user/userSevices";
-import User from "../../models/user/user";
 
 export class UserController {
     static async getAllUsers(req: Request, res: Response, next: NextFunction) {
@@ -30,7 +29,7 @@ export class UserController {
         const userData = req.body;
         try{
             const response=await UserServices.createUser(userData);
-            res.status(200).send("Success! User created!");
+            res.status(200).json(response);
         }
         catch(err){
             next(err)   

@@ -14,4 +14,4 @@ export const eventSchema = z.object({
     event_quantity:z.number()
 });
 
-type Event = z.infer<typeof eventSchema>;
+export type Event = z.infer<typeof eventSchema>;

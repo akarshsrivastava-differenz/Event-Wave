@@ -5,9 +5,9 @@ export const userSchema = z.object({
     first_name:z.string(),
     last_name:z.string(),
     email:z.email(),
-    hashed_password:z.string(),
+    password:z.string(),
     role:z.literal(["attendee" , "organizer"]),
     phone_number:z.string()
 });
 
-type User = z.infer<typeof userSchema>
+export type User = z.infer<typeof userSchema>

@@ -3,7 +3,7 @@ dotenv.config();
 
 //User model
 import express, { Express, Request, Response } from "express";
-import userRoutes from "./routes/user/userRoutes";
+import userRouter from "./routes/user/userRoutes";
 import { LoggerMiddleware } from "./middleware/logger";
 import sequelize from "./config/dbConfig";
 import  "./models/user/user";
@@ -14,7 +14,7 @@ const app: Express = express();
 const PORT: number = 8000;
 
 
-sequelize.sync({ force:false })
+sequelize.sync({ force:false  , alter:false })
     .then(() => {
         console.log("Database and models synchronized successfully!");
     })
@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(LoggerMiddleware.logger); //Logger Middleware function to log server request information
 
 //Router for user functionalities/API
-app.use("/users", userRoutes);
+app.use("/users", userRouter);
 
 //Root of application
 app.get("/", (req: Request, res: Response) => {

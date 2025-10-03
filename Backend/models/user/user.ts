@@ -8,7 +8,7 @@ interface UserAttributes {
     first_name: string,
     last_name: string,
     email: string,
-    hashed_password: string,
+    password: string,
     role: UserRole,
     phone_number: string
 }
@@ -19,7 +19,7 @@ class User extends Model<UserAttributes> implements UserAttributes {
     public first_name!: string;
     public last_name!:string;
     public email!: string;
-    public hashed_password!: string;
+    public password!: string;
     public role!: UserRole;
     public phone_number!: string;
 
@@ -51,7 +51,7 @@ User.init(
                 isEmail:true,
             }
         },
-        hashed_password: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false
         },

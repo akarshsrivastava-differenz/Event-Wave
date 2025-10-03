@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { UserController } from "../../controller/user/userController";
 
-const router=Router();
+const userRouter=Router();
 
-router.get("/all" , UserController.getAllUsers);
-router.get("/:id" , UserController.getuserById);
-router.post("/signup" , UserController.signup);
+userRouter.get("/all" , UserController.getAllUsers);
+userRouter.get("/:id" , UserController.getuserById);
+userRouter.post("/signup" , UserController.signup);
 
-export default router;
+export default userRouter;
