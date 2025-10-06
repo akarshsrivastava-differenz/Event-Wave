@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { UserController } from "../../controller/user/userController";
+import { UserValidator } from "../../middleware/validators/user/user";
 
 const userRouter=Router();
 
 userRouter.get("/all" , UserController.getAllUsers);
-userRouter.get("/:id" , UserController.getuserById);
 userRouter.post("/signup" , UserController.signup);
 userRouter.post("/login" , UserController.login);
+userRouter.get("/me" , UserValidator.verifyToken , UserController.getMe);
 
+userRouter.get("/:id" , UserController.getuserById);
 export default userRouter;

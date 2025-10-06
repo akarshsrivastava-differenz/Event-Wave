@@ -29,8 +29,8 @@ const Login = () => {
         try {
             const result = await axios.post("http://localhost:8000/users/login" , {email , password} , {withCredentials:true});
             const userData = result.data;
-
-            if (userData.user_id) {
+            console.log(userData);
+            if (userData.userId) {
                 login(userData);
                 navigate("/");
             }

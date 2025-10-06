@@ -13,7 +13,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 
 const app: Express = express();
-const PORT: number = 8000;
+const PORT: number = 8080;
 const corsOptions = {
     origin: "http://localhost:5173",
     credentials: true,
@@ -43,6 +43,6 @@ app.get("/", (req: Request, res: Response) => {
     res.send("Hello World!");
 })
 
-app.listen(PORT, () => {
+app.listen(PORT ,  () => {
     console.log(`Server is running on port : ${PORT}`);
 })

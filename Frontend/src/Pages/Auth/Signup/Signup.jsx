@@ -55,13 +55,13 @@ const Signup = () => {
                                 <Controller
                                     control={control}
                                     name="signup[email]"
-                                    rules={{ required: true, maxLength: 20 }}
+                                    rules={{ required: "Email is required.", maxLength: 20 }}
                                     render={({ field }) => {
                                         return <Form.Control isInvalid={!!errors.signup?.email} {...field} type="email" placeholder="Enter email" />
                                     }}
                                 />
                                 <Form.Control.Feedback type='invalid'>
-                                    {errors.signup?.email && "Email is required."}
+                                    {errors.signup?.email && errors.signup?.email?.message}
                                 </Form.Control.Feedback>
                             </Form.Group>
 
@@ -72,13 +72,13 @@ const Signup = () => {
                                         <Controller
                                             name="signup[fName]"
                                             control={control}
-                                            rules={{ required: true }}
+                                            rules={{ required: "First name is required." }}
                                             render={({ field }) => {
                                                 return <Form.Control isInvalid={!!errors.signup?.fName} {...field} type="text" placeholder="Enter first name" />
                                             }}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            {errors.signup?.fName && "First name is required."}
+                                            {errors.signup?.fName && errors.signup?.fName?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
@@ -88,13 +88,13 @@ const Signup = () => {
                                         <Controller
                                             name="signup[lName]"
                                             control={control}
-                                            rules={{ required: true }}
+                                            rules={{ required: "Last name is required." }}
                                             render={({ field }) => {
                                                 return <Form.Control {...field} isInvalid={!!errors.signup?.lName} type="text" placeholder="Enter last name" />
                                             }}
                                         />
                                         <Form.Control.Feedback type='invalid'>
-                                            {errors.signup?.lName && "Last name is required."}
+                                            {errors.signup?.lName && errors.signup?.lName?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
@@ -106,13 +106,13 @@ const Signup = () => {
                                         <Controller
                                             name="signup[phoneNumber]"
                                             control={control}
-                                            rules={{ required: true, maxLength: 10 }}
+                                            rules={{ required: "Contact number is required.", maxLength: 10 }}
                                             render={({ field }) => {
                                                 return <Form.Control {...field} isInvalid={!!errors.signup?.phoneNumber} type="text" placeholder="Enter contact number" />
                                             }}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            {errors.signup?.phoneNumber && "Contact number is required."}
+                                            {errors.signup?.phoneNumber && errors.signup?.phoneNumber?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group></Col>
                                 <Col>
@@ -133,22 +133,22 @@ const Signup = () => {
                                         <Controller
                                             name="signup[password]"
                                             control={control}
-                                            rules={{ required: true }}
+                                            rules={{ required: "Password is required." }}
                                             render={({ field }) => {
                                                 return <Form.Control isInvalid={!!errors.signup?.password} type="password" placeholder="Password" {...field} />
                                             }}
                                         />
                                         <Form.Control.Feedback type='invalid'>
-                                            {errors.signup?.password && "Password is required."}
+                                            {errors.signup?.password && errors.signup?.password?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
 
                                 <Col>
-                                    <Form.Group className="mb-3" controlId="rePassword">
+                                    <Form.Group className="mb-3" controlId="signup[rePassword]">
                                         <Form.Label>Re-enter Password</Form.Label>
                                         <Controller
-                                            name="rePassword"
+                                            name="signup[rePassword]"
                                             control={control}
                                             rules={{
                                                 required: "Re-Enter the password.",
@@ -165,7 +165,7 @@ const Signup = () => {
                                             }}
                                         />
                                         <Form.Control.Feedback type='invalid'>
-                                            {errors.signup?.rePassword?.message}
+                                            {errors.signup?.rePassword && errors.signup?.rePassword.message}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>

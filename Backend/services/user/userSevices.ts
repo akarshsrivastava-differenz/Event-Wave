@@ -85,16 +85,18 @@ export class UserServices {
             if(!isAuthorized){
                 throw new CustomErrorHandler(400 , "Invalid credential or user does not exists");
             }
+            const userId = isUserExists.user_id;
+            const userRole = isUserExists.role;
+
             const jwtPayload={
-                user_id:isUserExists.user_id,
-                user_role:isUserExists.role,
-                user_email:isUserExists.email
+                user_id:userId,
+                user_role:userRole,
+                user_email:userEmail
             }
             const jwtSecret = process.env.JWT_KEY || "";
             const jwtToken = jwt.sign(jwtPayload , jwtSecret , {expiresIn:"1h"} );
-            const userId = isUserExists.user_id;
             
-            return {jwtToken , userId};
+            return {jwtToken , userId , userRole , userEmail};
         }
         catch(err){
             throw err;

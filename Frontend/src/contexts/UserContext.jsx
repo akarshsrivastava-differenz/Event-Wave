@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { useEffect , createContext, useContext, useState } from "react";
+import axios from "axios";
 
 const UserContext = createContext();
 
@@ -7,12 +8,23 @@ export const UserProvider = ({ children }) => {
     const [isAuthenticated , setIsAuthenticated]=useState(false);
     const [userType , setUserType] = useState(false);
 
+    useEffect(()=>{
+        verifyToken();
+    } , []);
+
+    const verifyToken = async() =>{
+        try{
+            const response = await axios.get("http://localhost:8080/users/me" , {withCredentials:true});
+            console.log(response);
+            console.log("hello")
+        }   
+        catch(err){
+            console.log("Something went wrong : " , err);
+        }
+    }
+
     const login = (userData) => {
         setUser(userData);
-        if(userData.role === "organizer"){
-            setUserType(true);
-        }
-        setIsAuthenticated(true);
     }
     const logout = () => {
         setUser(null);
@@ -22,6 +34,7 @@ export const UserProvider = ({ children }) => {
 
     const contextValue = {
         user,
+        setUser,
         login,
         logout,
         isAuthenticated,

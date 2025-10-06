@@ -6,7 +6,7 @@ export class UserController {
     
     static async getAllUsers(req: Request, res: Response, next: NextFunction) {
         try {
-            const response:unknown= await UserServices.getAllUsers();
+            const response = await UserServices.getAllUsers();
             if(!response){
                 return res.status(404).json({msg : "Users not found or Invalid request!"});
             }
@@ -32,7 +32,6 @@ export class UserController {
         const userData = req.body;
         try{
             const response=await UserServices.createUser(userData);
-            const cookieSecret = process.env.COOKIE_SECRET
             res.status(200).json(response);
         }
         catch(err){
@@ -44,8 +43,8 @@ export class UserController {
         const { email , password} = req.body;
         try{
             const response = await UserServices.loginUser(email , password);
-            const cookieSecret = process.env.COOKIE_SECRET
-            res.cookie("user_cookie" , cookieSecret , {
+        
+            res.cookie("user_cookie" , response.jwtToken , {
                 secure:true,
                 httpOnly:true,
                 maxAge:1000 * 60 * 60 * 24,
@@ -57,4 +56,9 @@ export class UserController {
             next(err);
         }
     }
+
+    static async getMe(req:Request , res:Response , next:NextFunction){
+       res.send("Hello!");
+    }
+
 }
