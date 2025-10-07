@@ -52,18 +52,18 @@ export class UserServices {
             if (!privateKey) {
                 throw new CustomErrorHandler(500, "Error with jwt key!");
             }
-            const jwtToken = jwt.sign({
-                id: newUser.user_id,
-                user_role: newUser.role,
-                user_email: newUser.email
-            }, privateKey, { expiresIn: "20h" });
+            // const jwtToken = jwt.sign({
+            //     id: newUser.user_id,
+            //     user_role: newUser.role,
+            //     user_email: newUser.email
+            // }, privateKey, { expiresIn: "20h" });
             const userId = newUser.user_id;
             
-            if(!jwtToken){
-                throw new CustomErrorHandler(500 , "Error with jwt token!");
-            }
+            // if(!jwtToken){
+            //     throw new CustomErrorHandler(500 , "Error with jwt token!");
+            // }
 
-            return { jwtToken, userId };
+            return { userId };
         }
         catch (err) {
             throw err;
@@ -79,11 +79,11 @@ export class UserServices {
                 email : userEmail
             }});
             if(!isUserExists){
-                throw new CustomErrorHandler(404 , "Invalid credential or user does not exists!");
+                throw new CustomErrorHandler(404 , "Invalid credentials or user does not exists!");
             }
             const isAuthorized=await bcrypt.compare(userPassword , isUserExists.password);
             if(!isAuthorized){
-                throw new CustomErrorHandler(400 , "Invalid credential or user does not exists");
+                throw new CustomErrorHandler(400 , "Invalid credentials or user does not exists");
             }
             const userId = isUserExists.user_id;
             const userRole = isUserExists.role;
@@ -94,7 +94,7 @@ export class UserServices {
                 user_email:userEmail
             }
             const jwtSecret = process.env.JWT_KEY || "";
-            const jwtToken = jwt.sign(jwtPayload , jwtSecret , {expiresIn:"1h"} );
+            const jwtToken = jwt.sign(jwtPayload , jwtSecret , {expiresIn:"24h"} );
             
             return {jwtToken , userId , userRole , userEmail};
         }

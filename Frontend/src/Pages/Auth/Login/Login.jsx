@@ -22,17 +22,15 @@ const Login = () => {
     });
 
     const { login } = useUser();
-    const email = watch("login[email]");
-    const password = watch("login[password]");
 
-    const handleLogin = async () => {
+    const handleLogin = async (data) => {
         try {
-            const result = await axios.post("http://localhost:8000/users/login" , {email , password} , {withCredentials:true});
+            const {email , password} = data.login;
+            const result = await axios.post("http://localhost:8080/users/login" , {email , password} , {withCredentials:true});
             const userData = result.data;
-            console.log(userData);
             if (userData.userId) {
                 login(userData);
-                navigate("/");
+                navigate("/dashboard");
             }
             else {
                 console.log("User does not exists");

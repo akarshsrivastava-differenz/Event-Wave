@@ -2,11 +2,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./Signup.css"
 import AuthAbout from '../Components/AuthAbout';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useForm, Controller } from 'react-hook-form';
+import axios from 'axios';
 
 
 const Signup = () => {
@@ -24,17 +25,30 @@ const Signup = () => {
             }
         }
     });
+    
+    const navigate = useNavigate();
+    // const email = watch("signup.email");
+    // const fName = watch("signup.fName");
+    // const lName = watch("signup.lName");
+    // const phoneNumber = watch("signup.phoneNumber");
+    // const role = watch("signup.role");
+    // const password = watch("signup.password");
+    // const rePassword = watch("rePassword");
 
-    const email = watch("signup.email");
-    const fName = watch("signup.fName");
-    const lName = watch("signup.lName");
-    const phoneNumber = watch("signup.phoneNumber");
-    const role = watch("signup.role");
-    const password = watch("signup.password");
-    const rePassword = watch("rePassword");
-
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        try{
+            const {email , first_name , last_name , password , phone_number , role , } = data.signup;
+            const response = await axios.post("http://localhost:8080/users/signup" , {email , first_name , last_name , password , phone_number , role});
+            if(!response){
+                console.log("User creation failed!");
+                navigate("/signup");
+            }
+            console.log("User created successfully!");
+            navigate("/login");
+        }   
+        catch(err){
+            console.log(err);
+        }
     }
 
     return (
@@ -67,10 +81,10 @@ const Signup = () => {
 
                             <Row>
                                 <Col>
-                                    <Form.Group className="mb-3" controlId="fName">
+                                    <Form.Group className="mb-3" controlId="first_name">
                                         <Form.Label>First name</Form.Label>
                                         <Controller
-                                            name="signup[fName]"
+                                            name="signup[first_name]"
                                             control={control}
                                             rules={{ required: "First name is required." }}
                                             render={({ field }) => {
@@ -83,10 +97,10 @@ const Signup = () => {
                                     </Form.Group>
                                 </Col>
                                 <Col>
-                                    <Form.Group className="mb-3" controlId="lName">
+                                    <Form.Group className="mb-3" controlId="last_name">
                                         <Form.Label>Last name</Form.Label>
                                         <Controller
-                                            name="signup[lName]"
+                                            name="signup[last_name]"
                                             control={control}
                                             rules={{ required: "Last name is required." }}
                                             render={({ field }) => {
@@ -101,10 +115,10 @@ const Signup = () => {
                             </Row>
                             <Row>
                                 <Col>
-                                    <Form.Group className="mb-3" controlId="phoneNumber">
+                                    <Form.Group className="mb-3" controlId="phone_number">
                                         <Form.Label>Contact number</Form.Label>
                                         <Controller
-                                            name="signup[phoneNumber]"
+                                            name="signup[phone_number]"
                                             control={control}
                                             rules={{ required: "Contact number is required.", maxLength: 10 }}
                                             render={({ field }) => {

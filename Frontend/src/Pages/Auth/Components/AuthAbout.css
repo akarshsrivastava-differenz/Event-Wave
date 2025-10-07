@@ -3,8 +3,8 @@
     margin:0;
 }
 
-p{
-    color:lightgray !important;
+.login-left p{
+    color:lightgray ;
 }
 
 /*Left part*/

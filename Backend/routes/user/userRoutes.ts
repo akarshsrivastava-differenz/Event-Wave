@@ -8,6 +8,7 @@ userRouter.get("/all" , UserController.getAllUsers);
 userRouter.post("/signup" , UserController.signup);
 userRouter.post("/login" , UserController.login);
 userRouter.get("/me" , UserValidator.verifyToken , UserController.getMe);
+userRouter.get("/logout" , UserController.logout);
 
 userRouter.get("/:id" , UserController.getuserById);
 export default userRouter;
