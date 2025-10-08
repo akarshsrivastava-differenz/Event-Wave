@@ -88,11 +88,11 @@ const Signup = () => {
                                             control={control}
                                             rules={{ required: "First name is required." }}
                                             render={({ field }) => {
-                                                return <Form.Control isInvalid={!!errors.signup?.fName} {...field} type="text" placeholder="Enter first name" />
+                                                return <Form.Control isInvalid={!!errors.signup?.first_name} {...field} type="text" placeholder="Enter first name" />
                                             }}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            {errors.signup?.fName && errors.signup?.fName?.message}
+                                            {errors.signup?.first_name && errors.signup?.first_name?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
@@ -104,11 +104,11 @@ const Signup = () => {
                                             control={control}
                                             rules={{ required: "Last name is required." }}
                                             render={({ field }) => {
-                                                return <Form.Control {...field} isInvalid={!!errors.signup?.lName} type="text" placeholder="Enter last name" />
+                                                return <Form.Control {...field} isInvalid={!!errors.signup?.last_name} type="text" placeholder="Enter last name" />
                                             }}
                                         />
                                         <Form.Control.Feedback type='invalid'>
-                                            {errors.signup?.lName && errors.signup?.lName?.message}
+                                            {errors.signup?.last_name && errors.signup?.last_name?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
@@ -122,11 +122,11 @@ const Signup = () => {
                                             control={control}
                                             rules={{ required: "Contact number is required.", maxLength: 10 }}
                                             render={({ field }) => {
-                                                return <Form.Control {...field} isInvalid={!!errors.signup?.phoneNumber} type="text" placeholder="Enter contact number" />
+                                                return <Form.Control {...field} isInvalid={!!errors.signup?.phone_number} type="text" placeholder="Enter contact number" />
                                             }}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            {errors.signup?.phoneNumber && errors.signup?.phoneNumber?.message}
+                                            {errors.signup?.phone_number && errors.signup?.phone_number?.message}
                                         </Form.Control.Feedback>
                                     </Form.Group></Col>
                                 <Col>

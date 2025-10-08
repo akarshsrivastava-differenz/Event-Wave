@@ -11,6 +11,7 @@ import "./models/event/event";
 import "./config/association";
 import cookieParser from "cookie-parser";
 import cors from "cors"
+import eventRouter from "./routes/event/eventRoutes";
 
 const app: Express = express();
 const PORT: number = 8080;
@@ -36,11 +37,12 @@ app.use(express.json());
 app.use(LoggerMiddleware.logger); //Logger Middleware function to log server request information
 
 //Router for user functionalities/API
-app.use("/users", userRouter);
+app.use("/users" , userRouter);
+app.use("/events" , eventRouter);
 
 //Root of application
 app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World!");
+    res.send("Hello! This is EventWave backend!");
 })
 
 app.listen(PORT ,  () => {

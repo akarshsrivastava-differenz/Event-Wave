@@ -11,4 +11,5 @@ userRouter.get("/me" , UserValidator.verifyToken , UserController.getMe);
 userRouter.get("/logout" , UserController.logout);
 
 userRouter.get("/:id" , UserController.getuserById);
+
 export default userRouter;

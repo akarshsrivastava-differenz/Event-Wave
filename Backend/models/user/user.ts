@@ -13,7 +13,6 @@ interface UserAttributes {
     phone_number: string
 }
 
-
 class User extends Model<UserAttributes> implements UserAttributes {
     declare user_id: string;
     declare first_name: string;

@@ -14,16 +14,26 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
         verifyToken();
     },[]);
+    
     useEffect(()=>{
         redirectTo();
-    } , [isAuthenticated , navigate]);
+    } , [ isAuthenticated , navigate ]);
+    
+    useEffect(()=>{
+        allowCreateEvent();
+    } , [ isAuthenticated , navigate ]);
+
 
     const redirectTo = ()=>{
         if(isAuthenticated && ["/signup" , "/login"].includes(window.location.pathname)){
             navigate("/dashboard");
         }   
     }
-
+    const allowCreateEvent = ()=>{
+        if(!userType && ["/create-event"].includes(window.location.pathname)){
+            navigate("/dashboard");
+        }
+    }
     const verifyToken = async () => {
         try {
             const response = await axios.get("http://localhost:8080/users/me", { withCredentials: true });
