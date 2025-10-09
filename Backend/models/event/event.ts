@@ -11,6 +11,7 @@ interface EventAttributes{
     event_venue_address: string,
     event_price: number,
     event_size: number,
+    user_id:string
 }
 
 class Event extends Model<EventAttributes> implements EventAttributes {
@@ -23,6 +24,7 @@ class Event extends Model<EventAttributes> implements EventAttributes {
     declare event_venue_address: string;
     declare event_price: number;
     declare event_size: number;
+    declare user_id: string;
 }
 
 Event.init(
@@ -64,6 +66,11 @@ Event.init(
         event_size: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        user_id:{
+            type:DataTypes.UUID,
+            defaultValue:UUIDV4,
+            allowNull:false,
         }
     },
     {

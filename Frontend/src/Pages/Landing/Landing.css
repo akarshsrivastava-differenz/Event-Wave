@@ -9,6 +9,10 @@
     height:100%;
 }
 
+.link{
+    text-decoration: none;
+}
+
 /*first div (Intro div) */
  #landing-intro-container{
     width:100%;

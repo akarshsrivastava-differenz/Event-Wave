@@ -7,9 +7,9 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
 
     const navigate=useNavigate();
-    const [user, setUser] = useState(null);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [userType, setUserType] = useState(false);
+    const [user , setUser] = useState(null);
+    const [isAuthenticated , setIsAuthenticated] = useState(false);
+    const [userType , setUserType] = useState(false);   
 
     useEffect(() => {
         verifyToken();

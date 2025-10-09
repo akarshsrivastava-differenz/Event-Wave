@@ -4,13 +4,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useForm, Controller } from "react-hook-form";
+import axios from "axios";
 
 
 const CreateEvent = () => {
 
     const { handleSubmit, control, register, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         const {
             event_title,
             event_description,
@@ -25,9 +26,12 @@ const CreateEvent = () => {
 
             const event_start = `${startDate}T${startTime}:00`;
             const event_end = `${endDate}T${endTime}:00`;
+
+            const eventDetails = {event_title , event_description , event_category , event_start , event_end , event_venue_address , event_price , event_size};
             
             try{
-                console.log(event_start);
+                const response = await axios.post("http://localhost:8080/events/create" , {eventDetails} , {withCredentials:true});
+                console.log(response);
             }
             catch(err){
                 console.error("Error while creating events : " , err);

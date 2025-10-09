@@ -39,8 +39,8 @@ const Landing = () => {
                             Amazing Events</h1>
                     </div>
                     <div id="intro-container-btns">
-                        <Link to="/events"> <button className="intro-btns">Discover Events</button> </Link>
-                        <Link to="/xyz"> <button className="intro-btns">Organize Event</button> </Link>
+                        <Link class="link" to="/events"> <button className="intro-btns">Discover Events</button> </Link>
+                        <Link class="link" to="/xyz"> <button className="intro-btns">Organize Event</button> </Link>
                     </div>
                 </div>
 

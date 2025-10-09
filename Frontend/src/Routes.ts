@@ -6,7 +6,7 @@ import Login from "./Pages/Auth/Login/Login";
 import App from "./App";
 import ProtectedRoutes from "./ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
-import CreateEvent from "./Pages/Dashboard/Pages/CreateEvent/CreateEvent";
+import CreateEvent from "./Pages/Dashboard/Organizer/Pages/CreateEvent/create-event/CreateEvent";
 import DashboardContent from "./Pages/Dashboard/DashboardContent";
 
 const router = createBrowserRouter([
