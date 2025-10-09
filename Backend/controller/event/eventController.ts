@@ -34,7 +34,7 @@ export class EventController{
             const {user_id} = req.userData;
             const response = await EventServices.fetchEventForUser(user_id);
             
-            res.status(200).json({response});
+            res.status(200).json(response);
         }
         catch(err){
             next(err);

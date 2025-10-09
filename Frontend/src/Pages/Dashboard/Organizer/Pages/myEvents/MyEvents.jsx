@@ -1,8 +1,25 @@
 import "./MyEvents.css";
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router";
+import axios from "axios";
+import { useEffect } from "react";
 
 const MyEvents = ()=>{
+
+    const getEvents = async()=>{
+        try{
+            const response = await axios.get("http://localhost:8080/events/get-event-for-user" , {withCredentials:true});
+            console.log(response);
+        }
+        catch(err){
+            console.error("Error while fetching data or Invalid request! : " , err);
+        }
+    }
+
+    useEffect(()=>{
+        getEvents();
+    },[]);
+
     return(
         <div className="organizer-header-2-table-conatainer">
                     <Table responsive className="table border-spacing">
