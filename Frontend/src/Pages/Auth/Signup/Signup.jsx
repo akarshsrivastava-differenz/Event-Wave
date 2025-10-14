@@ -8,11 +8,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
+import { toast , Bounce } from 'react-toastify';
 
 
 const Signup = () => {
 
-    const { handleSubmit, control, watch, getValues ,formState: { errors } } = useForm({
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+    const { handleSubmit, control, getValues, formState: { errors } } = useForm({
         defaultValues: {
             signup: {
                 email: "",
@@ -25,7 +27,7 @@ const Signup = () => {
             }
         }
     });
-    
+
     const navigate = useNavigate();
     // const email = watch("signup.email");
     // const fName = watch("signup.fName");
@@ -36,18 +38,38 @@ const Signup = () => {
     // const rePassword = watch("rePassword");
 
     const onSubmit = async (data) => {
-        try{
-            const {email , first_name , last_name , password , phone_number , role , } = data.signup;
-            const response = await axios.post("http://localhost:8080/users/signup" , {email , first_name , last_name , password , phone_number , role});
-            if(!response){
+        try {
+            const { email, first_name, last_name, password, phone_number, role, } = data.signup;
+            const response = await axios.post(`${baseUrl}/users/signup`, { email, first_name, last_name, password, phone_number, role });
+            if (!response) {
                 console.log("User creation failed!");
                 navigate("/signup");
             }
-            console.log("User created successfully!");
+            toast.success('User created successfully, Welcome to EventWave!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             navigate("/login");
-        }   
-        catch(err){
-            console.log(err);
+        }
+        catch (err) {
+            toast.info('User signin failed, Try later!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
         }
     }
 

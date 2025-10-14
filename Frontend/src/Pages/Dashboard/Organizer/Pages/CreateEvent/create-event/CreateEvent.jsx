@@ -5,13 +5,15 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useForm, Controller } from "react-hook-form";
 import axios from "axios";
+import { toast, Bounce } from "react-toastify";
 
 
 const CreateEvent = () => {
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
     const { handleSubmit, control, register, formState: { errors } } = useForm();
 
-    const onSubmit = async(data) => {
+    const onSubmit = async (data) => {
         const {
             event_title,
             event_description,
@@ -22,20 +24,41 @@ const CreateEvent = () => {
             endTime,
             event_venue_address,
             event_price,
-            event_size } = data.information;
+            event_size
+        } = data.information;
 
-            const event_start = `${startDate}T${startTime}:00`;
-            const event_end = `${endDate}T${endTime}:00`;
+        const event_start = `${startDate}T${startTime}:00`;
+        const event_end = `${endDate}T${endTime}:00`;
 
-            const eventDetails = {event_title , event_description , event_category , event_start , event_end , event_venue_address , event_price , event_size};
-            
-            try{
-                const response = await axios.post("http://localhost:8080/events/create" , {eventDetails} , {withCredentials:true});
-                console.log(response);
-            }
-            catch(err){
-                console.error("Error while creating events : " , err);
-            }
+        const eventDetails = { event_title, event_description, event_category, event_start, event_end, event_venue_address, event_price, event_size };
+
+        try {
+            const response = await axios.post(`${baseUrl}/events/create`, { eventDetails }, { withCredentials: true });
+            toast.success('Event created successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        catch (err) {
+            toast.error('Event creation failed, Try later!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
     }
 
     return (

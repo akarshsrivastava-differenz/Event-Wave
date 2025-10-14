@@ -18,4 +18,20 @@ export class UserValidator {
             next(err);
         }
     }
+    static getUserId(req:Request , res:Response , next:NextFunction) {
+        try{
+            const token = req.headers.authorization?.split(" ")[1];
+            if(!token){
+                return res.status(200).json({userId : null});
+            }
+            const jwtSecret = process.env.JWT_KEY || "";
+            const isValid = jwt.verify(token , jwtSecret);
+            //@ts-expect-error
+            req.userData = isValid;
+            next();
+        }
+        catch(err){
+            next(err);
+        }
+    }
 }

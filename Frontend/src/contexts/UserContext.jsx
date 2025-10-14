@@ -1,5 +1,4 @@
 import { useEffect, createContext, useContext, useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router";
 
 const UserContext = createContext();
@@ -9,7 +8,7 @@ export const UserProvider = ({ children }) => {
     const navigate=useNavigate();
     const [user , setUser] = useState(null);
     const [isAuthenticated , setIsAuthenticated] = useState(false);
-    const [userType , setUserType] = useState(false);   
+    const [isOrganiser , setIsOrganiser] = useState(false);   
 
     useEffect(() => {
         verifyToken();
@@ -17,9 +16,6 @@ export const UserProvider = ({ children }) => {
     
     useEffect(()=>{
         redirectTo();
-    } , [ isAuthenticated , navigate ]);
-    
-    useEffect(()=>{
         allowCreateEvent();
     } , [ isAuthenticated , navigate ]);
 
@@ -30,22 +26,27 @@ export const UserProvider = ({ children }) => {
         }   
     }
     const allowCreateEvent = ()=>{
-        if(!userType && ["/create-event"].includes(window.location.pathname)){
+        if(!isOrganiser && ["/create-event"].includes(window.location.pathname)){
             navigate("/dashboard");
         }
     }
     const verifyToken = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/users/me", { withCredentials: true });
-            const data = response.data;
-            if (!data.userId) {
+            if(!localStorage.getItem("token")){
                 return;
             }
-            setUser(data);
-            setIsAuthenticated(true);
-            if (data.userRole === "organiser") {
-                setUserType(true);
+            const userData={
+                userId : localStorage.getItem("userId"),
+                token : localStorage.getItem("token"),
+                userRole : localStorage.getItem("userRole"),
             }
+            setUser(userData);
+            setIsAuthenticated(true);
+            if(userData.userRole === "organiser"){
+                setIsOrganiser(true);
+                return;
+            }
+            setIsOrganiser(false);
         }
         catch (err) {
             console.log("Something went wrong : ", err);
@@ -56,15 +57,18 @@ export const UserProvider = ({ children }) => {
         setUser(userData);
         setIsAuthenticated(true);
         if (userData.userRole == "organiser") {
-            setUserType(true);
+            setIsOrganiser(true);
         }
+        localStorage.setItem("userId" , userData.userId);
+        localStorage.setItem("token" , userData.token);
+        localStorage.setItem("userRole" , userData.userRole);
     }
     const logout = async () => {
         try {
-            await axios.get("http://localhost:8080/users/logout", { withCredentials: true });
             setUser(null);
             setIsAuthenticated(false);
-            setUserType(false);
+            setIsOrganiser(false);
+            localStorage.clear();
         }
         catch (err) {
             console.log("Error while logout : ", err);
@@ -77,7 +81,7 @@ export const UserProvider = ({ children }) => {
         login,
         logout,
         isAuthenticated,
-        userType
+        isOrganiser
     };
 
     return (

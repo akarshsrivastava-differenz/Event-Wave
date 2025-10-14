@@ -3,6 +3,7 @@ import { Op } from "sequelize";
 import jwt, { Jwt } from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { CustomErrorHandler } from "../../middleware/error-handler";
+import { is } from "zod/v4/locales";
 
 
 export class UserServices {
@@ -73,7 +74,7 @@ export class UserServices {
     static async loginUser(userEmail : string , userPassword : string){
         try{
             if(!userEmail || !userPassword){
-                throw new CustomErrorHandler(400 , "Invalid or missing credentials!");
+                throw new CustomErrorHandler(404 , "Invalid or missing credentials!");
             }
             const isUserExists = await User.findOne({where : {
                 email : userEmail
@@ -87,16 +88,18 @@ export class UserServices {
             }
             const userId = isUserExists.user_id;
             const userRole = isUserExists.role;
+            const userFName = isUserExists.first_name;
+            const userLName = isUserExists.last_name
 
             const jwtPayload={
                 user_id:userId,
                 user_role:userRole,
-                user_email:userEmail
+                user_email:userEmail,
             }
             const jwtSecret = process.env.JWT_KEY || "";
             const jwtToken = jwt.sign(jwtPayload , jwtSecret , {expiresIn:"24h"} );
             
-            return {jwtToken , userId , userRole , userEmail};
+            return {token : jwtToken , userId , userRole , userFName , userLName  ,userEmail};
         }
         catch(err){
             throw err;

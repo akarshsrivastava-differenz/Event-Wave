@@ -5,10 +5,13 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const MyEvents = ()=>{
-
     const getEvents = async()=>{
         try{
-            const response = await axios.get("http://localhost:8080/events/get-event-for-user" , {withCredentials:true});
+            const response = await axios.get("http://localhost:8080/events/get-event-for-user" , {
+                headers:{
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                }
+            });
             console.log(response);
         }
         catch(err){
@@ -40,7 +43,7 @@ const MyEvents = ()=>{
                                 <td>234 / 300</td>
                                 <td>&#8377;70000</td>
                                 <td><div className="event-status">Active</div></td>
-                                <td><div><Link to="/events/eventId">View</Link></div></td>
+                                <td><div><Link to="/events/1">View</Link></div></td>
                             </tr>
                         </tbody>
                     </Table>

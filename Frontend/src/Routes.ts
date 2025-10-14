@@ -8,6 +8,7 @@ import ProtectedRoutes from "./ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
 import CreateEvent from "./Pages/Dashboard/Organizer/Pages/CreateEvent/create-event/CreateEvent";
 import DashboardContent from "./Pages/Dashboard/DashboardContent";
+import EventPage from "./Pages/Events/pages/EventPage";
 
 const router = createBrowserRouter([
     {
@@ -25,19 +26,22 @@ const router = createBrowserRouter([
                 path: "signup",
                 Component: Signup
             },
+            { 
+                path: "events", 
+                Component: Events },
             {
                 path: "",
                 Component: ProtectedRoutes,
                 children: [
-                    { path: "events", Component: Events },
                     { 
                         path : "dashboard", 
                         Component : Dashboard,
                         children:[
                             { index : true , Component:DashboardContent },
-                            { path : "create-event" , Component:CreateEvent }
+                            { path : "create-event" , Component:CreateEvent },
                         ]
-                    }
+                    },
+                    { path : "events/:eventId" , Component:EventPage },
                 ]
             }
         ]

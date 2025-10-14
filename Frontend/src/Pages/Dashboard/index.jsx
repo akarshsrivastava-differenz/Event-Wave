@@ -1,15 +1,15 @@
-import DashboardMenu from "./Components/DashboardMenu";
+import DashboardMenu from "./Components/DashboardSidebar";
 import "./Dashboard.css";
 import { useUser } from "../../contexts/UserContext";
 import { Outlet } from "react-router";
 
 const Dashboard = ()=>{
     
-    const{userType} = useUser();
+    const{isOrganiser} = useUser();
 
     return (
         <div className="dashboard-main">
-            <DashboardMenu userType={userType}/>
+            <DashboardMenu userType={isOrganiser}/>
             <Outlet/>
         </div>
     );

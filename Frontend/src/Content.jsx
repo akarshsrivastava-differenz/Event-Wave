@@ -1,19 +1,41 @@
+import { useEffect, useRef } from "react";
 import "./Content.css";
+import { Bounce , ToastContainer } from "react-toastify";
 import { useLocation } from "react-router";
 
 const Content = ({ children }) => {
 
+    const divRef=useRef(null);
     const location = useLocation();
-    const shouldRemovePadding = location.pathname === "/login" || location.pathname === "/signup" || location.pathname.startsWith("/dashboard");
-    const padding = shouldRemovePadding? "0" : "2rem";
-    let height=null;
-    if(shouldRemovePadding){
-        height="100%";
-    }
-    const customStyle = {padding , height};
+    useEffect(()=>{
+        const targetedDiv = divRef.current;
+        if(!targetedDiv){
+            return;
+        }
+        const shouldRemovePadding = ["/login" , "/signup"].includes(location.pathname) || location.pathname.startsWith("/dashboard");
+        if(shouldRemovePadding){
+            targetedDiv.classList.add("customStyle");
+        }
+        else{
+            targetedDiv.classList.remove("customStyle");
+        }
+    } , [location.pathname]);
 
     return (
-        <div className="content-container" style={customStyle}>
+        <div ref={divRef} className="content-container">
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
             {children}
         </div>
     );

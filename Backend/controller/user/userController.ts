@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { UserServices } from "../../services/user/userSevices";
-import { createHmac } from "node:crypto";
 
 export class UserController {
 
@@ -44,42 +43,38 @@ export class UserController {
         try {
             const result = await UserServices.loginUser(email, password);
 
-            res.cookie("user_cookie", result.jwtToken, {
-                secure: true,
-                httpOnly: true,
-                maxAge: 1000 * 60 * 60 * 24,
-                sameSite: "strict",
-                path:"/"
-            });
-            const response = {
-                userId:result.userId,
-                userEmail:result.userEmail,
-                userRole:result.userRole
-            }
-            res.status(200).json(response);
+            // res.cookie("user_cookie", result.jwtToken, {
+            //     secure: true,
+            //     httpOnly: true,
+            //     maxAge: 1000 * 60 * 60 * 24,
+            //     sameSite: "strict",
+            //     path:"/"
+            // });
+
+            res.status(200).json(result);
         }
         catch (err) {
             next(err);
         }
     }
 
-    static async getMe(req: Request, res: Response, next: NextFunction) {
-        try {
-            //@ts-expect-error
-            const userData = req.userData;
+    // static async getMe(req: Request, res: Response, next: NextFunction) {
+    //     try {
+    //         //@ts-expect-error
+    //         const userData = req.userData;
 
-            res.status(200).json({
-                userId: userData.user_id,
-                userRole: userData.user_role,
-                userEmail: userData.user_email
-            });
-        }
-        catch(err){
-            res.status(500).json({
-                msg:"Something went wrong!"
-            });
-        }
-    }
+    //         res.status(200).json({
+    //             userId: userData.user_id,
+    //             userRole: userData.user_role,
+    //             userEmail: userData.user_email
+    //         });
+    //     }
+    //     catch(err){
+    //         res.status(500).json({
+    //             msg:"Something went wrong!"
+    //         });
+    //     }
+    // }
 
     static logout(req:Request , res:Response , next:NextFunction){
         try{

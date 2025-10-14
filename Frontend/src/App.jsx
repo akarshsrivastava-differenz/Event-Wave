@@ -5,7 +5,6 @@ import Content from './Content';
 import { Outlet } from "react-router";
 import { ThemeProvider } from './contexts/ThemeContext';
 import { UserProvider } from './contexts/UserContext';
-import { useEffect } from 'react';
 
 const App = () => {
 
