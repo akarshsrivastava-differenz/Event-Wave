@@ -18,15 +18,13 @@
 .event-left-img{
     position:relative;
     height:30rem;
-    border-top-left-radius:2rem;
-    border-top-right-radius:2rem;
+    border-radius:2rem;
 }
 #main-img{
     object-fit: cover;
     width:100%;
     height:100%;
-    border-top-left-radius:2rem;
-    border-top-right-radius:2rem;
+    border-radius:2rem;
 }
 .event-title{
     position:absolute;
@@ -41,8 +39,7 @@
     bottom:1px;
     inset:0;
     opacity: 0.4;
-    border-top-left-radius:2rem;
-    border-top-right-radius:2rem;
+    border-radius:2rem;
 }
 .event-title h5{
     background-color: var(--event-confirm);
