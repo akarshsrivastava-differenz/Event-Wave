@@ -29,8 +29,7 @@ const Login = () => {
             const { email, password } = data.login;
             const result = await axios.post(`${baseUrl}/users/login`, { email, password });
             const userData = result.data;
-            console.log(userData);
-            if (userData.userId) {
+            if (userData) {
                 login(userData);
                 navigate("/dashboard");
                 toast.success("User logged in successfully!", {

@@ -5,7 +5,7 @@ import { UserValidator } from "../../middleware/validators/user/user";
 const eventRouter = Router();
 
 eventRouter.get("/all" , EventController.getAllEvents);
-eventRouter.post("/create"  , EventController.createNewEvent);
-eventRouter.get("/get-event-for-user" , UserValidator.getUserId  , EventController.getEventForUser);
+eventRouter.post("/create" , EventController.createNewEvent);
+eventRouter.get("/get-event-for-user" , UserValidator.getUserId , EventController.getEventForUser);
 
 export default eventRouter;

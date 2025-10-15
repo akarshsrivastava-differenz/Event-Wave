@@ -50,8 +50,13 @@ export class UserController {
             //     sameSite: "strict",
             //     path:"/"
             // });
-
-            res.status(200).json(result);
+            const response = {
+                userFName:result.userFName,
+                userLName:result.userLName,
+                userRole:result.userRole,
+                token:result.jwtToken
+            }
+            res.status(200).json(response);
         }
         catch (err) {
             next(err);
@@ -76,15 +81,15 @@ export class UserController {
     //     }
     // }
 
-    static logout(req:Request , res:Response , next:NextFunction){
-        try{
-            const cookieName=process.env.COOKIE_NAME || "";
-            res.clearCookie("user_cookie" , { path:"/" } ); 
-            res.status(204).json({msg:"Logout successfully!"});
-        }
-        catch(err){
-            next(err);
-        }
-    }
+    // static logout(req:Request , res:Response , next:NextFunction){
+    //     try{
+    //         const cookieName=process.env.COOKIE_NAME || "";
+    //         res.clearCookie(cookieName , { path:"/" } ); 
+    //         res.status(204).json({msg:"Logout successfully!"});
+    //     }
+    //     catch(err){
+    //         next(err);
+    //     }
+    // }
 
 }

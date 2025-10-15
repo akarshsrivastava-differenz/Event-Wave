@@ -5,7 +5,8 @@ import { faUser, faCalendar, faBars } from "@fortawesome/free-solid-svg-icons";
 import { useUser } from '../../contexts/UserContext';
 
 const Header = () => {
-    const { isAuthenticated, logout , userData} = useUser();
+    const { isAuthenticated, logout } = useUser();
+
     return (
         <header>
             <div id="logo-container">
@@ -18,15 +19,20 @@ const Header = () => {
             </nav>
             <div id="user-actions">
                 <div className='user-dropdown'>
-                    <FontAwesomeIcon icon={faUser} id="user-icon" />
                     {isAuthenticated ?
-                        <div className="user-dropdown-content">
-                            <Link className="nav-links" to="/dashboard">dashboard</Link> <br />
-                            <Link className="nav-links" onClick={logout} to="/login">log out</Link>
+                        <div>
+                            <div>{localStorage.getItem("userFName").charAt(0).toUpperCase() + localStorage.getItem("userLName").charAt(0).toUpperCase()}</div>
+                            <div className="user-dropdown-content">
+                                <Link className="nav-links" to="/dashboard">dashboard</Link> <br />
+                                <Link className="nav-links" onClick={logout} to="/login">log out</Link>
+                            </div>
                         </div> :
-                        <div className="user-dropdown-content">
-                            <Link className="nav-links" to="/login">Log in</Link> <br />
-                            <Link className="nav-links" to="/signup">Sign up</Link>
+                        <div>
+                            <FontAwesomeIcon icon={faUser} id="user-icon" />
+                            <div className="user-dropdown-content">
+                                <Link className="nav-links" to="/login">Log in</Link> <br />
+                                <Link className="nav-links" to="/signup">Sign up</Link>
+                            </div>
                         </div>
                     }
                 </div>

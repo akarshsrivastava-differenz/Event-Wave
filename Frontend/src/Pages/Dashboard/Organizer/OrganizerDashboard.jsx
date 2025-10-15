@@ -7,7 +7,7 @@ const OrganizerDashboard = () => {
         <div className="organizer-main">
             <div className="organizer-header">
                 <div className="organizer-header-content">
-                    <h3>Dashboard</h3>
+                    <h3 style={{textAlign:"left"}}>Dashboard</h3>
                     <p style={{ color: "gray" }}>Welcome back, manage your events and track performance</p>
                 </div>
                 <div className="organizer-header-content">

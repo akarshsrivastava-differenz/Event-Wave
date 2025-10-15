@@ -56,12 +56,15 @@ export const UserProvider = ({ children }) => {
     const login = (userData) => {
         setUser(userData);
         setIsAuthenticated(true);
-        if (userData.userRole == "organiser") {
-            setIsOrganiser(true);
-        }
-        localStorage.setItem("userId" , userData.userId);
+        setIsOrganiser(false);
+        localStorage.setItem("userFName" , userData.userFName);
+        localStorage.setItem("userLName" , userData.userLName);
         localStorage.setItem("token" , userData.token);
         localStorage.setItem("userRole" , userData.userRole);
+        if (userData.userRole == "organiser") {
+            return setIsOrganiser(true);
+        }
+        setIsOrganiser(false);
     }
     const logout = async () => {
         try {

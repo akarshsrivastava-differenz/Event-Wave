@@ -89,17 +89,19 @@ export class UserServices {
             const userId = isUserExists.user_id;
             const userRole = isUserExists.role;
             const userFName = isUserExists.first_name;
-            const userLName = isUserExists.last_name
+            const userLName = isUserExists.last_name;
 
             const jwtPayload={
                 user_id:userId,
                 user_role:userRole,
                 user_email:userEmail,
+                first_name:userFName,
+                last_name:userLName
             }
             const jwtSecret = process.env.JWT_KEY || "";
             const jwtToken = jwt.sign(jwtPayload , jwtSecret , {expiresIn:"24h"} );
             
-            return {token : jwtToken , userId , userRole , userFName , userLName  ,userEmail};
+            return { jwtToken , userFName , userLName , userRole };
         }
         catch(err){
             throw err;

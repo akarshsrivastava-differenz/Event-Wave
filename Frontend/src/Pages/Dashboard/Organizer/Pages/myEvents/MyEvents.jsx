@@ -5,23 +5,24 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const MyEvents = ()=>{
-    const getEvents = async()=>{
-        try{
-            const response = await axios.get("http://localhost:8080/events/get-event-for-user" , {
-                headers:{
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                }
-            });
-            console.log(response);
-        }
-        catch(err){
-            console.error("Error while fetching data or Invalid request! : " , err);
-        }
-    }
+    // const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+    // const getEvents = async()=>{
+    //     try{
+    //         const response = await axios.get(`${baseUrl}/events/get-event-for-user` , {
+    //             headers:{
+    //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //             }
+    //         });
+    //         console.log(response);
+    //     }
+    //     catch(err){
+    //         console.error("Error while fetching data or Invalid request! : " , err);
+    //     }
+    // }
 
-    useEffect(()=>{
-        getEvents();
-    },[]);
+    // useEffect(()=>{
+    //     getEvents();
+    // },[]);
 
     return(
         <div className="organizer-header-2-table-conatainer">
