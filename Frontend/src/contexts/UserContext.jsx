@@ -11,8 +11,6 @@ export const UserProvider = ({ children }) => {
     const [isOrganiser , setIsOrganiser] = useState(false);   
     const [loading , setLoading] = useState(true);
 
-    console.log("User Context file : " , isAuthenticated);
-
     useEffect(() => {
         verifyToken();
     },[]);
@@ -35,7 +33,6 @@ export const UserProvider = ({ children }) => {
     }
     const verifyToken = async () => {
         try {
-            console.log("Verify token function" , isAuthenticated);
             if(!localStorage.getItem("token")){
                 return;
             }
