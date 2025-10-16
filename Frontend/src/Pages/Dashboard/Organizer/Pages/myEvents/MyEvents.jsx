@@ -1,8 +1,8 @@
 import "./MyEvents.css";
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router";
-import axios from "axios";
-import { useEffect } from "react";
+// import axios from "axios";
+// import { useEffect } from "react";
 
 const MyEvents = ()=>{
     // const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;

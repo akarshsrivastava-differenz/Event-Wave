@@ -9,6 +9,9 @@ export const UserProvider = ({ children }) => {
     const [user , setUser] = useState(null);
     const [isAuthenticated , setIsAuthenticated] = useState(false);
     const [isOrganiser , setIsOrganiser] = useState(false);   
+    const [loading , setLoading] = useState(true);
+
+    console.log("User Context file : " , isAuthenticated);
 
     useEffect(() => {
         verifyToken();
@@ -32,6 +35,7 @@ export const UserProvider = ({ children }) => {
     }
     const verifyToken = async () => {
         try {
+            console.log("Verify token function" , isAuthenticated);
             if(!localStorage.getItem("token")){
                 return;
             }
@@ -44,9 +48,11 @@ export const UserProvider = ({ children }) => {
             setIsAuthenticated(true);
             if(userData.userRole === "organiser"){
                 setIsOrganiser(true);
+                setLoading(false);
                 return;
             }
             setIsOrganiser(false);
+            setLoading(false);
         }
         catch (err) {
             console.log("Something went wrong : ", err);
@@ -84,7 +90,8 @@ export const UserProvider = ({ children }) => {
         login,
         logout,
         isAuthenticated,
-        isOrganiser
+        isOrganiser,
+        loading
     };
 
     return (

@@ -29,13 +29,6 @@ const Signup = () => {
     });
 
     const navigate = useNavigate();
-    // const email = watch("signup.email");
-    // const fName = watch("signup.fName");
-    // const lName = watch("signup.lName");
-    // const phoneNumber = watch("signup.phoneNumber");
-    // const role = watch("signup.role");
-    // const password = watch("signup.password");
-    // const rePassword = watch("rePassword");
 
     const onSubmit = async (data) => {
         try {

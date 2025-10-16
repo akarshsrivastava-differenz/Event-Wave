@@ -1,18 +1,19 @@
 import { useUser } from "./contexts/UserContext";
-import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { Outlet, Navigate } from "react-router";
 
 const ProtectedRoutes = () => {
-    const navigate = useNavigate();
-    const { isAuthenticated } = useUser();
 
-    useEffect(()=>{
-        if (!isAuthenticated){
-            navigate("/login" , {replace:true});
-        }
-    } , [isAuthenticated , navigate]);
+    const { isAuthenticated, loading } = useUser();
 
-    return isAuthenticated? <Outlet/> : null;
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+  return <Outlet />;
 }
 
 export default ProtectedRoutes;

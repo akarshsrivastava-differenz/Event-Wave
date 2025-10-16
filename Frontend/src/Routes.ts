@@ -10,6 +10,8 @@ import CreateEvent from "./Pages/Dashboard/Organizer/Pages/CreateEvent/create-ev
 import DashboardContent from "./Pages/Dashboard/DashboardContent";
 import EventPage from "./Pages/Events/pages/EventPage";
 
+console.log("Routes.ts");
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -37,7 +39,7 @@ const router = createBrowserRouter([
                         path : "dashboard", 
                         Component : Dashboard,
                         children:[
-                            { index : true , Component:DashboardContent },
+                            { path:"" , Component:DashboardContent },
                             { path : "create-event" , Component:CreateEvent },
                         ]
                     },
