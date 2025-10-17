@@ -27,7 +27,7 @@ const Login = () => {
     const handleLogin = async (data) => {
         try {
             const { email, password } = data.login;
-            const result = await axios.post(`${baseUrl}/users/login`, { email, password });
+            const result = await axios.post(`${baseUrl}/users/login`, { email, password } , {withCredentials:true});
             const userData = result.data;
             if (userData) {
                 login(userData);

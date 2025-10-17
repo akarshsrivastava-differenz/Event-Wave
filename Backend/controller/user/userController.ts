@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { UserServices } from "../../services/user/userSevices";
+import { fa } from "zod/v4/locales";
 
 export class UserController {
 
@@ -43,19 +44,29 @@ export class UserController {
         try {
             const result = await UserServices.loginUser(email, password);
 
-            // res.cookie("user_cookie", result.jwtToken, {
-            //     secure: true,
-            //     httpOnly: true,
-            //     maxAge: 1000 * 60 * 60 * 24,
-            //     sameSite: "strict",
-            //     path:"/"
-            // });
+            res.cookie("user_cookie", result.jwtToken, {
+                secure: true,
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24,
+                sameSite: "strict",
+                path:"/"
+            });
+
             const response = {
                 userFName:result.userFName,
                 userLName:result.userLName,
                 userRole:result.userRole,
                 token:result.jwtToken
             }
+
+            res.cookie("user_info" , {...response , token:result.jwtToken} , {
+                secure:false,
+                httpOnly:false,
+                maxAge:1000*60*60*24,
+                sameSite:"strict",
+                path:"/"
+            } )
+            
             res.status(200).json(response);
         }
         catch (err) {
@@ -81,15 +92,16 @@ export class UserController {
     //     }
     // }
 
-    // static logout(req:Request , res:Response , next:NextFunction){
-    //     try{
-    //         const cookieName=process.env.COOKIE_NAME || "";
-    //         res.clearCookie(cookieName , { path:"/" } ); 
-    //         res.status(204).json({msg:"Logout successfully!"});
-    //     }
-    //     catch(err){
-    //         next(err);
-    //     }
-    // }
+    static logout(req:Request , res:Response , next:NextFunction){
+        try{
+            const cookieName=process.env.COOKIE_NAME || "";
+            res.clearCookie(cookieName , { path:"/" } ); 
+            res.clearCookie("user_info" , {path:"/" } );
+            res.status(204).json({msg:"Logout successfully!"});
+        }
+        catch(err){
+            next(err);
+        }
+    }
 
 }

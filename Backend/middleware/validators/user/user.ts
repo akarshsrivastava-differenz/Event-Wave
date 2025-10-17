@@ -1,12 +1,13 @@
  import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import User from "../../../models/user/user";
 export class UserValidator {
 
     static async verifyToken(req: Request, res: Response, next: NextFunction) {
         try {
             const cookie = req.cookies.user_cookie;
             if (!cookie) {
-                return res.status(200).json({userId:null});
+                return res.status(404).json({userId:null});
             }
             const jwtSecret = process.env.JWT_KEY || "";
             const isValidToken = jwt.verify(cookie, jwtSecret);
@@ -29,6 +30,18 @@ export class UserValidator {
             //@ts-expect-error
             req.userData = isValid;
             next();
+        }
+        catch(err){
+            next(err);
+        }
+    }
+    static async isOrganiser(req:Request , res:Response , next:NextFunction){
+        try{
+            //@ts-expect-error
+            const userId = req.userData.userId;
+            const response = await User.findOne({where:{
+                user_id:userId,
+            }});
         }
         catch(err){
             next(err);

@@ -7,7 +7,7 @@ const userRouter=Router();
 userRouter.get("/all" , UserController.getAllUsers);
 userRouter.post("/signup" , UserController.signup);
 userRouter.post("/login" , UserController.login);
-// userRouter.get("/logout" , UserController.logout);
+userRouter.get("/logout" , UserController.logout);
 
 userRouter.get("/:id" , UserController.getuserById);
 

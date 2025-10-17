@@ -33,9 +33,7 @@ const CreateEvent = () => {
         const eventDetails = { event_title, event_description, event_category, event_start, event_end, event_venue_address, event_price, event_size };
 
         try {
-            const response = await axios.post(`${baseUrl}/events/create`, { eventDetails } , {headers:{
-                Authorization:`Bearer ${localStorage.getItem("token")}`
-            }});
+            const response = await axios.post(`${baseUrl}/events/create`, { eventDetails } , {withCredentials:true});
             toast.success('Event created successfully!', {
                 position: "top-right",
                 autoClose: 5000,

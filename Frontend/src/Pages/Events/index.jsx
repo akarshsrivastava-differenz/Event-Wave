@@ -18,7 +18,7 @@ const Events = () => {
                         <option value="workshop">Workshop</option>
                         <option value="concert">Concert</option>
                         <option value="festival">Festival</option>
-                        <option value="networking1">Networking</option>
+                        <option value="networking">Networking</option>
                     </select>
                     <select name="date" className="dropdowns" id="event-date">
                         <option value="any">Anytime</option>

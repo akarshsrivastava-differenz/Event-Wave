@@ -3,15 +3,12 @@ import { Op } from "sequelize";
 import jwt, { Jwt } from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { CustomErrorHandler } from "../../middleware/error-handler";
-import { is } from "zod/v4/locales";
-
-
 export class UserServices {
     
     static async getAllUsers() {
         try {
             const response = await User.findAll();
-            return response
+            return response;
         }
         catch (err) {
             throw err;

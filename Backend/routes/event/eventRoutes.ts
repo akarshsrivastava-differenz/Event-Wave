@@ -6,6 +6,6 @@ const eventRouter = Router();
 
 eventRouter.get("/all" , EventController.getAllEvents);
 eventRouter.post("/create" , EventController.createNewEvent);
-eventRouter.get("/get-event-for-user" , UserValidator.getUserId , EventController.getEventForUser);
+eventRouter.get("/get-event-for-user" , UserValidator.verifyToken , EventController.getEventForUser);
 
 export default eventRouter;
