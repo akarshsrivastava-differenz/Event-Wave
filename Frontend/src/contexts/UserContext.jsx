@@ -66,9 +66,11 @@ export const UserProvider = ({ children }) => {
         localStorage.setItem("userFName",userData.userFName);
         localStorage.setItem("userLName",userData.userLName);
         if (userData.userRole == "organiser") {
+            setLoading(false);
             return setIsOrganiser(true);
         }
         setIsOrganiser(false);
+        setLoading(false);
     }
     const logout = async () => {
         try {

@@ -7,10 +7,12 @@ const EventGrid = () => {
 
     const [events, setEvents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
     const getEventData = async () => {
         try {
-            const result = await axios.get("http://localhost:3000/events");
+            const result = await axios.get(`${baseUrl}/events/all`);
+            console.log(result);
             setEvents(result.data);
             setIsLoading(false);
         }
