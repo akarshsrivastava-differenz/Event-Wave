@@ -45,7 +45,7 @@ const Login = () => {
                 });
             }
         }
-        catch (err) {
+        catch(e) {
             toast.error("Invalid credentials or User doesn't exists!", {
                 position: "top-right",
                 autoClose: 5000,

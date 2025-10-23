@@ -1,5 +1,4 @@
 import { Request , Response , NextFunction } from "express";
-import { UserServices } from "../../services/user/userSevices";
 import { EventServices } from "../../services/event/eventServices";
 
 export class EventController{

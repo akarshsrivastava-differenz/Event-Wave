@@ -3,7 +3,7 @@ import { Outlet, Navigate } from "react-router";
 
 const ProtectedRoutes = () => {
 
-    const { isAuthenticated, loading } = useUser();
+  const { isAuthenticated, loading } = useUser();
 
   if (loading) {
     return <div>Loading...</div>;

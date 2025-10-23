@@ -6,9 +6,9 @@ import { Outlet } from "react-router";
 import { ThemeProvider } from './contexts/ThemeContext';
 import { UserProvider } from './contexts/UserContext';
 
+
 const App = () => {
-
-
+  
   return (
     <>
       <UserProvider>

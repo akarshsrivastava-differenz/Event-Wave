@@ -1,13 +1,13 @@
 import Event from "../../models/event/event";
 import User from "../../models/user/user";
-import { CustomErrorHandler } from "../../middleware/error-handler";
+import { AppError } from "../../utils/AppError";
 export class EventServices {
 
     static async createEvent(eventDetail: Event, user_id: string) {
         try {
             const newEvent = await Event.create({ ...eventDetail, user_id });
             if (!newEvent) {
-                throw new CustomErrorHandler(500, "Something went wrong!");
+                throw new AppError(500, "Something went wrong at server!");
             }
             return { eventId: newEvent.event_id };
         }
@@ -37,7 +37,7 @@ export class EventServices {
             }});
             
             if(!result){
-                throw new CustomErrorHandler(404 , "Something went wrong or invalid request");
+                throw new AppError(404 , "Something went wrong or invalid request");
             } 
             
             return result;

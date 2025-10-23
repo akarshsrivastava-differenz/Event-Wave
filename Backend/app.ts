@@ -12,11 +12,12 @@ import "./config/association";
 import cookieParser from "cookie-parser";
 import cors from "cors"
 import eventRouter from "./routes/event/eventRoutes";
+import { errorHandler } from "./middleware/error-handler";
 
 const app: Express = express();
 const PORT: number = 8080;
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_DOMAIN_NAME,
     credentials: true,
 };
 app.use(cors(corsOptions));
@@ -43,7 +44,9 @@ app.use("/events" , eventRouter);
 //Root of application
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello! This is EventWave backend!");
-})
+});
+
+app.use(errorHandler);
 
 app.listen(PORT ,  () => {
     console.log(`Server is running on port : ${PORT}`);

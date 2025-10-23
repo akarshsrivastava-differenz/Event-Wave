@@ -8,6 +8,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
+
     const navigate = useNavigate();
     const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
     const [user, setUser] = useState(null);
@@ -62,6 +63,8 @@ export const UserProvider = ({ children }) => {
     const login = (userData) => {
         setUser(userData);
         setIsAuthenticated(true);
+        localStorage.setItem("userFName",userData.userFName);
+        localStorage.setItem("userLName",userData.userLName);
         if (userData.userRole == "organiser") {
             return setIsOrganiser(true);
         }

@@ -10,13 +10,14 @@ import CreateEvent from "./Pages/Dashboard/Organizer/Pages/CreateEvent/create-ev
 import DashboardContent from "./Pages/Dashboard/DashboardContent";
 import EventPage from "./Pages/Events/pages/EventPage";
 
+
 const router = createBrowserRouter([
     {
         path: "/",
         Component: App,
         children: [
             {
-                 index: true, Component: Landing 
+                index: true, Component: Landing 
             },
             {
                 path: "login",
@@ -29,9 +30,9 @@ const router = createBrowserRouter([
             { 
                 path: "events", 
                 Component: Events },
-            {
-                path: "",
-                Component: ProtectedRoutes,
+                {
+                    path: "",
+                    Component: ProtectedRoutes,
                 children: [
                     { 
                         path : "dashboard", 
@@ -46,6 +47,6 @@ const router = createBrowserRouter([
             }
         ]
     },
-])
+]);
 
 export default router;

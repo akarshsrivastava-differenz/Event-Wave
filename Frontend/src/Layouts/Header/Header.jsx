@@ -6,6 +6,8 @@ import { useUser } from '../../contexts/UserContext';
 
 const Header = () => {
     const { isAuthenticated, logout } = useUser();
+    const fInitial = localStorage.getItem("userFName")?.charAt(0).toUpperCase();
+    const lInitial = localStorage.getItem("userLName")?.charAt(0).toUpperCase();
 
     return (
         <header>
@@ -21,7 +23,7 @@ const Header = () => {
                 <div className='user-dropdown'>
                     {isAuthenticated ?
                         <div>
-                            <div className="user-initials" >{localStorage.getItem("userFName").charAt(0).toUpperCase() + localStorage.getItem("userLName").charAt(0).toUpperCase()}</div>
+                            <div className="user-initials" >{fInitial+lInitial}</div>
                             <div className="user-dropdown-content">
                                 <Link className="nav-links" to="/dashboard">dashboard</Link> <br />
                                 <Link className="nav-links" onClick={logout} to="/login">log out</Link>

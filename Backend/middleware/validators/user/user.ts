@@ -35,16 +35,4 @@ export class UserValidator {
             next(err);
         }
     }
-    static async isOrganiser(req:Request , res:Response , next:NextFunction){
-        try{
-            //@ts-expect-error
-            const userId = req.userData.userId;
-            const response = await User.findOne({where:{
-                user_id:userId,
-            }});
-        }
-        catch(err){
-            next(err);
-        }
-    }
 }

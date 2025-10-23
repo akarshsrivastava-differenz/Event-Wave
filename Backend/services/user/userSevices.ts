@@ -1,8 +1,7 @@
 import User from "../../models/user/user";
-import { Op } from "sequelize";
 import jwt, { Jwt } from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { CustomErrorHandler } from "../../middleware/error-handler";
+import { AppError } from "../../utils/AppError";
 export class UserServices {
     
     static async getAllUsers() {
@@ -18,7 +17,7 @@ export class UserServices {
     static async getUserById(id: string) {
         try {
             if (!id) {
-                throw new CustomErrorHandler(400 , "Invalid request : id is missing!");
+                throw new AppError(400 , "Invalid request : id is missing!");
             }
             const response = await User.findByPk(id);
 
@@ -39,7 +38,7 @@ export class UserServices {
             });
 
             if (isExist) {
-                throw new CustomErrorHandler(400, "User already exists!");
+                throw new AppError(400 , "User exists");
             }
 
             const salt: string = await bcrypt.genSalt(10);
@@ -48,7 +47,7 @@ export class UserServices {
             const newUser = await User.create(userData);
             const privateKey: string = process.env.JWT_KEY || "";
             if (!privateKey) {
-                throw new CustomErrorHandler(500, "Error with jwt key!");
+                throw new AppError(500, "Error with jwt key!");
             }
             // const jwtToken = jwt.sign({
             //     id: newUser.user_id,
@@ -71,17 +70,17 @@ export class UserServices {
     static async loginUser(userEmail : string , userPassword : string){
         try{
             if(!userEmail || !userPassword){
-                throw new CustomErrorHandler(404 , "Invalid or missing credentials!");
+                throw new AppError(404 , "Invalid or missing credentials!");
             }
             const isUserExists = await User.findOne({where : {
                 email : userEmail
             }});
             if(!isUserExists){
-                throw new CustomErrorHandler(404 , "Invalid credentials or user does not exists!");
+                throw new AppError(404 , "Invalid credentials or user does not exists!");
             }
             const isAuthorized=await bcrypt.compare(userPassword , isUserExists.password);
             if(!isAuthorized){
-                throw new CustomErrorHandler(400 , "Invalid credentials or user does not exists");
+                throw new AppError(404, "Invalid credentials or user does not exists");
             }
             const userId = isUserExists.user_id;
             const userRole = isUserExists.role;

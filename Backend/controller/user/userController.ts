@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from "express";
 import { UserServices } from "../../services/user/userSevices";
-import { fa } from "zod/v4/locales";
 
 export class UserController {
 
