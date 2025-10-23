@@ -12,7 +12,6 @@ const EventGrid = () => {
     const getEventData = async () => {
         try {
             const result = await axios.get(`${baseUrl}/events/all`);
-            console.log(result);
             setEvents(result.data);
             setIsLoading(false);
         }
