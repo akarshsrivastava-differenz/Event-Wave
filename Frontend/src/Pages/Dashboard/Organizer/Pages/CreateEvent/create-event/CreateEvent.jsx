@@ -4,14 +4,61 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useForm, Controller } from "react-hook-form";
+import axios from "axios";
+import { toast, Bounce } from "react-toastify";
 
 
 const CreateEvent = () => {
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
-    const { handleSubmit, control, formState: { errors } } = useForm();
+    const { handleSubmit, control, register, formState: { errors } } = useForm();
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const {
+            event_title,
+            event_description,
+            event_category,
+            startDate,
+            endDate,
+            startTime,
+            endTime,
+            event_venue_address,
+            event_price,
+            event_size
+        } = data.information;
+
+        const event_start = `${startDate}T${startTime}:00`;
+        const event_end = `${endDate}T${endTime}:00`;
+
+        const eventDetails = { event_title, event_description, event_category, event_start, event_end, event_venue_address, event_price, event_size };
+
+        try {
+            const response = await axios.post(`${baseUrl}/events/create`, { eventDetails } , {withCredentials:true});
+            toast.success('Event created successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
+        catch (err) {
+            toast.error('Event creation failed, Try later!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        }
     }
 
     return (
@@ -27,37 +74,37 @@ const CreateEvent = () => {
                     <div className="form-information-section">
                         <h4>Event Information</h4>
                         <div className="form-section-main">
-                            <Form.Group className="mb-3" controlId="information[eventTitle]">
+                            <Form.Group className="mb-3" controlId="information[event_title]">
                                 <Form.Label>Event Title</Form.Label>
                                 <Controller
-                                    name="information[eventTitle]"
+                                    name="information[event_title]"
                                     control={control}
                                     rules={{ required: true, maxLength: 15 }}
                                     render={({ field }) => {
-                                        return <Form.Control isInvalid={!!errors.information?.eventTitle} type="text" placeholder="Event title" {...field} />
+                                        return <Form.Control isInvalid={!!errors.information?.event_title} type="text" placeholder="Event title" {...field} />
                                     }}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    {errors.information?.eventTitle && "Event title is required."}
+                                    {errors.information?.event_title && "Event title is required."}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="information[description]">
+                            <Form.Group className="mb-3" controlId="information[event_description]">
                                 <Form.Label>Description</Form.Label>
                                 <Controller
-                                    name="information[description]"
+                                    name="information[event_description]"
                                     control={control}
                                     rules={{ required: true }}
                                     render={({ field }) => {
-                                        return <Form.Control isInvalid={!!errors.information?.description} {...field} as="textarea" rows={3} placeholder="Describe your event description..." />
+                                        return <Form.Control isInvalid={!!errors.information?.event_description} {...field} as="textarea" rows={3} placeholder="Describe your event description..." />
                                     }}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    {errors.information?.description && "Event description is required."}
+                                    {errors.information?.event_description && "Event description is required."}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="information[eventCategory]">
+                            <Form.Group className="mb-3" controlId="information[event_category]">
                                 <Form.Label>Event Category</Form.Label>
-                                <Form.Select name="information[eventCategory]" aria-label="Event Category">
+                                <Form.Select {...register("information.event_category")} aria-label="Event Category">
                                     <option value="conference">Conference</option>
                                     <option value="workshop">Workshop</option>
                                     <option value="concert">Concert</option>
@@ -147,18 +194,18 @@ const CreateEvent = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="information[venue]">
+                                        <Form.Group className="mb-3" controlId="information[event_venue_address]">
                                             <Form.Label>Event Venue Address</Form.Label>
                                             <Controller
-                                                name="information[venue]"
+                                                name="information[event_venue_address]"
                                                 control={control}
                                                 rules={{ required: true }}
                                                 render={({ field }) => {
-                                                    return <Form.Control isInvalid={!!errors.information?.venue} type="text" placeholder="Event Venue" {...field} />
+                                                    return <Form.Control isInvalid={!!errors.information?.event_venue_address} type="text" placeholder="Event Venue" {...field} />
                                                 }}
                                             />
                                             <Form.Control.Feedback type="invalid">
-                                                {errors.information?.venue && "Event venue is required!"}
+                                                {errors.information?.event_venue_address && "Event venue is required!"}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
@@ -173,34 +220,34 @@ const CreateEvent = () => {
                             <Container fluid="md">
                                 <Row>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="information[price]">
+                                        <Form.Group className="mb-3" controlId="information[event_price]">
                                             <Form.Label>Ticket Price</Form.Label>
                                             <Controller
-                                                name="information[price]"
+                                                name="information[event_price]"
                                                 rules={{ required: true }}
                                                 control={control}
                                                 render={({ field }) => {
-                                                    return <Form.Control isInvalid={!!errors.information?.price} type="number" placeholder="Price" {...field} />
+                                                    return <Form.Control isInvalid={!!errors.information?.event_price} type="number" placeholder="Price" {...field} />
                                                 }}
                                             />
                                             <Form.Control.Feedback type="invalid">
-                                                {errors.information?.price && "Event ticket price is required!"}
+                                                {errors.information?.event_price && "Event ticket price is required!"}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>
                                     <Col>
-                                        <Form.Group className="mb-3" controlId="information[quantity]">
+                                        <Form.Group className="mb-3" controlId="information[event_size]">
                                             <Form.Label>Quantity</Form.Label>
                                             <Controller
-                                                name="information[quantity]"
+                                                name="information[event_size]"
                                                 control={control}
                                                 rules={{ required: true }}
                                                 render={({ field }) => {
-                                                    return <Form.Control isInvalid={!!errors.information?.quantity} {...field} type="number" rows={3} placeholder="Ticket Quantity" />
+                                                    return <Form.Control isInvalid={!!errors.information?.event_size} {...field} type="number" rows={3} placeholder="Ticket Quantity" />
                                                 }}
                                             />
                                             <Form.Control.Feedback type="invalid">
-                                                {errors.information?.quantity && "Event ticket number is required!"}
+                                                {errors.information?.event_size && "Event ticket number is required!"}
                                             </Form.Control.Feedback>
                                         </Form.Group>
                                     </Col>

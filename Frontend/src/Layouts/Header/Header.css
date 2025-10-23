@@ -107,6 +107,18 @@ header{
     display:none;
 }
 
+.user-initials{
+    background-color: var(--color-shade-2);
+    padding:0.1rem 0.4rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    
+}
+initials:hover{
+    color:var(--logo-shade-1);
+    font-size:1.2rem;
+}
+
 /*Resposive*/
 
 @media only screen and (max-width:425px){

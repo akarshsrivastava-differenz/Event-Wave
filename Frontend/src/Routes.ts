@@ -6,8 +6,10 @@ import Login from "./Pages/Auth/Login/Login";
 import App from "./App";
 import ProtectedRoutes from "./ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
-import CreateEvent from "./Pages/Dashboard/Pages/CreateEvent/CreateEvent";
+import CreateEvent from "./Pages/Dashboard/Organizer/Pages/CreateEvent/create-event/CreateEvent";
 import DashboardContent from "./Pages/Dashboard/DashboardContent";
+import EventPage from "./Pages/Events/pages/EventPage";
+
 
 const router = createBrowserRouter([
     {
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
         Component: App,
         children: [
             {
-                 index: true, Component: Landing 
+                index: true, Component: Landing 
             },
             {
                 path: "login",
@@ -25,23 +27,26 @@ const router = createBrowserRouter([
                 path: "signup",
                 Component: Signup
             },
-            {
-                path: "",
-                Component: ProtectedRoutes,
+            { 
+                path: "events", 
+                Component: Events },
+                {
+                    path: "",
+                    Component: ProtectedRoutes,
                 children: [
-                    { path: "events", Component: Events },
                     { 
                         path : "dashboard", 
                         Component : Dashboard,
                         children:[
-                            { index : true , Component:DashboardContent },
-                            { path : "create-event" , Component:CreateEvent }
+                            { path:"" , Component:DashboardContent },
+                            { path : "create-event" , Component:CreateEvent },
                         ]
-                    }
+                    },
+                    { path : "events/:eventId" , Component:EventPage },
                 ]
             }
         ]
     },
-])
+]);
 
 export default router;

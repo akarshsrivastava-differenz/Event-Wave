@@ -1,11 +1,26 @@
-import { threadId } from "worker_threads";
-import User from "../../models/user";
-import { Op } from "sequelize";
-
+import User from "../../models/user/user";
+import jwt, { Jwt } from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import { AppError } from "../../utils/AppError";
 export class UserServices {
+    
     static async getAllUsers() {
         try {
             const response = await User.findAll();
+            return response;
+        }
+        catch (err) {
+            throw err;
+        }
+    }
+
+    static async getUserById(id: string) {
+        try {
+            if (!id) {
+                throw new AppError(400 , "Invalid request : id is missing!");
+            }
+            const response = await User.findByPk(id);
+
             return response
         }
         catch (err) {
@@ -13,31 +28,79 @@ export class UserServices {
         }
     }
 
-    static async getUserById(id: string){
+    static async createUser(userData: User) {
         try {
-            if(!id){
-                throw new Error("User not found or Invalid user!");
+            
+            const isExist = await User.findOne({
+                where: {
+                    email: userData.email
+                }
+            });
+
+            if (isExist) {
+                throw new AppError(400 , "User exists");
             }
-            const response = await User.findByPk(id);
-            if(!response){
-                throw new Error("User not found or Invalid user!");
+
+            const salt: string = await bcrypt.genSalt(10);
+            const hashed_password: string = await bcrypt.hash(userData.password, salt);
+            userData.password = hashed_password;
+            const newUser = await User.create(userData);
+            const privateKey: string = process.env.JWT_KEY || "";
+            if (!privateKey) {
+                throw new AppError(500, "Error with jwt key!");
             }
-            return response
+            // const jwtToken = jwt.sign({
+            //     id: newUser.user_id,
+            //     user_role: newUser.role,
+            //     user_email: newUser.email
+            // }, privateKey, { expiresIn: "20h" });
+            const userId = newUser.user_id;
+            
+            // if(!jwtToken){
+            //     throw new CustomErrorHandler(500 , "Error with jwt token!");
+            // }
+
+            return { userId };
         }
-        catch(err){
+        catch (err) {
             throw err;
         }
     }
 
+    static async loginUser(userEmail : string , userPassword : string){
+        try{
+            if(!userEmail || !userPassword){
+                throw new AppError(404 , "Invalid or missing credentials!");
+            }
+            const isUserExists = await User.findOne({where : {
+                email : userEmail
+            }});
+            if(!isUserExists){
+                throw new AppError(404 , "Invalid credentials or user does not exists!");
+            }
+            const isAuthorized=await bcrypt.compare(userPassword , isUserExists.password);
+            if(!isAuthorized){
+                throw new AppError(404, "Invalid credentials or user does not exists");
+            }
+            const userId = isUserExists.user_id;
+            const userRole = isUserExists.role;
+            const userFName = isUserExists.first_name;
+            const userLName = isUserExists.last_name;
 
-    static async createUser(userData: User): Promise<User> {
-        try {
-            const response = await User.create(userData);
-            console.log(response);
-            return response;
+            const jwtPayload={
+                user_id:userId,
+                user_role:userRole,
+                user_email:userEmail,
+                first_name:userFName,
+                last_name:userLName
+            }
+            const jwtSecret = process.env.JWT_KEY || "";
+            const jwtToken = jwt.sign(jwtPayload , jwtSecret , {expiresIn:"24h"} );
+            
+            return { jwtToken , userFName , userLName , userRole };
         }
-        catch (error: any) {
-            throw error;
+        catch(err){
+            throw err;
         }
     }
 }

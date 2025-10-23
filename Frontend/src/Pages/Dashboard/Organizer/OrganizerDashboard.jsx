@@ -1,13 +1,13 @@
 import "./OrganizerDashboard.css";
 import { Link } from "react-router";
-import Table from 'react-bootstrap/Table';
+import MyEvents from "./Pages/myEvents/MyEvents";
 
 const OrganizerDashboard = () => {
     return (
         <div className="organizer-main">
             <div className="organizer-header">
                 <div className="organizer-header-content">
-                    <h3>Dashboard</h3>
+                    <h3 style={{textAlign:"left"}}>Dashboard</h3>
                     <p style={{ color: "gray" }}>Welcome back, manage your events and track performance</p>
                 </div>
                 <div className="organizer-header-content">
@@ -38,54 +38,8 @@ const OrganizerDashboard = () => {
                     <Link to="/dashboard/create-event" className="link"><button className="organizer-header-2-btn">Create Event</button></Link>
                 </div>
 
-                <div className="organizer-header-2-table-conatainer">
-                    <Table responsive className="table border-spacing">
-                        <thead>
-                            <tr className="organizer-table-row">
-                                <th>Events</th>
-                                <th>Date</th>
-                                <th>Tickets sold</th>
-                                <th>Revenue</th>
-                                <th>Status</th>
-                                <th>Options</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Event name</td>
-                                <td>March 15, 2024</td>
-                                <td>234 / 300</td>
-                                <td>&#8377;70000</td>
-                                <td><div className="event-status">Active</div></td>
-                                <td><div><Link to="/events/eventId">View</Link></div></td>
-                            </tr>
-                            <tr>
-                                <td>Event name</td>
-                                <td>March 15, 2024</td>
-                                <td>234 / 300</td>
-                                <td>&#8377;70000</td>
-                                <td><div className="event-status">Active</div></td>
-                                <td><div><Link to="/events/eventId">View</Link></div></td>
-                            </tr>
-                            <tr>
-                                <td>Event name</td>
-                                <td>March 15, 2024</td>
-                                <td>234 / 300</td>
-                                <td>&#8377;70000</td>
-                                <td><div className="event-status">Active</div></td>
-                                <td><div><Link to="/events/eventId">View</Link></div></td>
-                            </tr>
-                            <tr>
-                                <td>Event name</td>
-                                <td>March 15, 2024</td>
-                                <td>234 / 300</td>
-                                <td>&#8377;70000</td>
-                                <td><div className="event-status">Active</div></td>
-                                <td><div><Link to="/events/eventId">View</Link></div></td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </div>
+                <MyEvents/>
+                
             </div>
         </div>
     );

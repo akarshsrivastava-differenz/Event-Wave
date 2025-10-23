@@ -1,14 +1,9 @@
-import { Request, Response, NextFunction } from "express"
+import { Request , Response , NextFunction } from "express";
+import { AppError } from "../utils/AppError";
 
-interface HttpError extends Error {
-    statusCode: number;
-}
-
-class ErrorHandler {
-    static errorHandler = (err: HttpError, req: Request, res: Response, next: NextFunction) => {
-        console.error(err.stack);
-        const statusCode = err.statusCode || 500;
-        const errMsg = err.message || "Something went wrong!";
-        res.status(statusCode).json({ "success": false, code: statusCode });
+export const errorHandler = (err : AppError | Error , req : Request , res : Response , next : NextFunction)=>{
+    if(err instanceof AppError){
+        res.status(err.statusCode).json({message:err.message});
     }
+    res.status(500).json({message : "Internal server error"});
 }

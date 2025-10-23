@@ -3,11 +3,11 @@ import OrganizerDashboard from "./Organizer/OrganizerDashboard";
 import { useUser } from "../../contexts/UserContext";
 
 const DashboardContent = () => {
-    const { userType } = useUser();
+    const { isOrganiser } = useUser();
 
     return (
         <>
-            {userType ? <OrganizerDashboard /> : <AttendeeDashboard />}
+            {isOrganiser ? <OrganizerDashboard /> : <AttendeeDashboard />}
         </>
     );
 }

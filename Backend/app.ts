@@ -3,18 +3,29 @@ dotenv.config();
 
 //User model
 import express, { Express, Request, Response } from "express";
-import userRoutes from "./routes/user/userRoutes";
+import userRouter from "./routes/user/userRoutes";
 import { LoggerMiddleware } from "./middleware/logger";
 import sequelize from "./config/dbConfig";
-import  "./models/user";
-import "./models/event";
+import  "./models/user/user";
+import "./models/event/event";
 import "./config/association";
+import cookieParser from "cookie-parser";
+import cors from "cors"
+import eventRouter from "./routes/event/eventRoutes";
+import { errorHandler } from "./middleware/error-handler";
 
 const app: Express = express();
-const PORT: number = 8000;
+const PORT: number = 8080;
+const corsOptions = {
+    origin: process.env.FRONTEND_DOMAIN_NAME,
+    credentials: true,
+};
+app.use(cors(corsOptions));
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
-
-sequelize.sync({ force:false })
+sequelize.sync({ force:false , alter:false })
     .then(() => {
         console.log("Database and models synchronized successfully!");
     })
@@ -27,13 +38,16 @@ app.use(express.json());
 app.use(LoggerMiddleware.logger); //Logger Middleware function to log server request information
 
 //Router for user functionalities/API
-app.use("/users", userRoutes);
+app.use("/users" , userRouter);
+app.use("/events" , eventRouter);
 
 //Root of application
 app.get("/", (req: Request, res: Response) => {
-    res.send("Hello World!");
-})
+    res.send("Hello! This is EventWave backend!");
+});
 
-app.listen(PORT, () => {
+app.use(errorHandler);
+
+app.listen(PORT ,  () => {
     console.log(`Server is running on port : ${PORT}`);
 })

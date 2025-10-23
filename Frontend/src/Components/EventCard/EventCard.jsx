@@ -5,7 +5,7 @@ const EventCard = ({ eventInfo }) => {
     
     return (
         <div className="event-card">
-            <Link className="link-component" to="/qwe">
+            <Link className="link-component" to="/events/qwe">
                 <p>By <b>{eventInfo.creator_username}</b></p>
                 <hr />
                 <p>On <b>{eventInfo.event_date}</b></p>

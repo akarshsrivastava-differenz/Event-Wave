@@ -26,6 +26,7 @@
 }
 .dashboard-event-info .dashboard-event-subInfo p {
     margin:0;
+    color:var(--color-shade-1);
 }
 .status-btn-container{
     background-color: var(--color-shade-1);
@@ -53,5 +54,6 @@
 }
 p{
     margin:0;
+    color:var(--color-shade-1);
 }
 
