@@ -20,7 +20,8 @@ export class EventServices {
         try{
             const result = await Event.findAll({include:{
                 model:User,
-                as:"organiser"
+                as:"organiser",
+                attributes:['first_name' , 'last_name']
             }});
 
             return result;
