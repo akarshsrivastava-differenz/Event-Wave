@@ -11,40 +11,64 @@ export class EventServices {
             }
             return { eventId: newEvent.event_id };
         }
-        catch(err){
+        catch (err) {
             throw err;
         }
     }
 
     static async fetchAllEvents() {
-        try{
-            const result = await Event.findAll({include:{
-                model:User,
-                as:"organiser",
-                attributes:['first_name' , 'last_name']
-            }});
+        try {
+            const result = await Event.findAll({
+                attributes: ["event_id", "event_start", "event_end", "event_title", "event_description"],
+                include: {
+                    model: User,
+                    as: "organiser",
+                    attributes: ['user_id', 'first_name', 'last_name']
+                }
+            });
 
             return result;
         }
-        catch(err){
+        catch (err) {
             throw err;
         }
     }
 
-    static async fetchEventForUser(user_id:string){
-        try{
-            const result = await Event.findAll({where:{
-                user_id:user_id
-            }});
-            
-            if(!result){
-                throw new AppError(404 , "Something went wrong or invalid request");
-            } 
-            
+    static async fetchEventForUser(user_id: string) {
+        try {
+            const result = await Event.findAll({
+                where: {
+                    user_id: user_id
+                }
+            });
+
+            if (!result) {
+                throw new AppError(404, "Something went wrong or invalid request");
+            }
+
             return result;
         }
-        catch(err){
+        catch (err) {
             throw err;
+        }
+    }
+    static async fetchEventById(eventId: string) {
+        try {
+            const eventData = await Event.findByPk(eventId , {
+                include:{
+                    model:User,
+                    as:"organiser",
+                    attributes:["first_name" , "last_name"]
+                }
+            });
+            if (!eventData) {
+                throw new AppError(404, "Event is deleted or has some problem!");
+            }
+
+            return eventData
+        }
+        catch (err) {
+            throw new AppError(404, "Event is deleted or has some problem!");
         }
     }
 }

@@ -27,7 +27,7 @@ const EventGrid = () => {
     return (
         <div className="events-card-container">
             {isLoading ? <h1>Loading...</h1> : events.map((event, index) => {
-                return <div key={index} className="events-card"><EventCard eventInfo={event} /></div>
+                return <div key={index} className="events-card"> < EventCard eventInfo={event} /> </div>
             })}
         </div>
     )

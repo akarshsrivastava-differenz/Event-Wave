@@ -8,7 +8,7 @@ import ProtectedRoutes from "./ProtectedRoute";
 import Dashboard from "./Pages/Dashboard";
 import CreateEvent from "./Pages/Dashboard/Organizer/Pages/CreateEvent/create-event/CreateEvent";
 import DashboardContent from "./Pages/Dashboard/DashboardContent";
-import EventPage from "./Pages/Events/pages/EventPage";
+import EventPage from "./Pages/Events/pages/Event/EventPage";
 
 
 const router = createBrowserRouter([

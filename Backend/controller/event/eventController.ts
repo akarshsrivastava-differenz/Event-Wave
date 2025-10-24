@@ -40,4 +40,16 @@ export class EventController{
         }
     }
 
+    static async getEventById(req:Request , res:Response , next:NextFunction){
+        try{
+            const {eventId} = req.params;
+            //@ts-expect-error
+            const result = await EventServices.fetchEventById(eventId);
+            res.status(200).json(result);
+        }
+        catch(err){
+            next(err);
+        }
+    }
+
 }

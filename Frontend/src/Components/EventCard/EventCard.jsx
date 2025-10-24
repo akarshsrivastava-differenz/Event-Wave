@@ -5,7 +5,7 @@ const EventCard = ({ eventInfo }) => {
     
     return (
         <div className="event-card">
-            <Link className="link-component" to="/events/qwe">
+            <Link className="link-component" to={`/events/${eventInfo.event_id}`}>
                 <p>By <b>{eventInfo.organiser.first_name + " " + eventInfo.organiser.last_name}</b></p>
                 <hr />
                 <p>On <b>{(eventInfo.event_start).slice(0,10)}</b></p>

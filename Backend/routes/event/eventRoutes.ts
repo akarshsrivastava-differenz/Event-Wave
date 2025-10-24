@@ -9,4 +9,6 @@ eventRouter.get("/all" , EventController.getAllEvents);
 eventRouter.post("/create" , UserValidator.verifyToken , EventController.createNewEvent);
 eventRouter.get("/get-event-for-user" , UserValidator.verifyToken , EventController.getEventForUser);
 
+eventRouter.get("/get/:eventId" , EventController.getEventById);
+
 export default eventRouter;
