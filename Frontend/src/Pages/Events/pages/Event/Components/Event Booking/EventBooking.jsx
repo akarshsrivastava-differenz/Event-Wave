@@ -1,6 +1,6 @@
 import "./EventBooking.css";
 
-const EventBooking = ()=>{
+const EventBooking = ({eventDetails})=>{
     return(
         <div className="event-right-main">
                 <div className="event-select-tickets">
