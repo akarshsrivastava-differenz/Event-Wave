@@ -10,13 +10,13 @@ import { faClipboardUser } from "@fortawesome/free-solid-svg-icons";
 
 const Landing = () => {
 
-    // const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
+    const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
     const [events, setEvents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const getEventData = async () => {
         try {
-            const result = await axios.get(`http://localhost:3000/events`);
+            const result = await axios.get(`${baseUrl}/events/all`);
             const eventData = result.data;
             setEvents(eventData);
             setIsLoading(false);
